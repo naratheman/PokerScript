@@ -4,7 +4,7 @@ Compiler for the language PokerScript (CMSI-3802)
 
 # The language PokerScript
 
-The usage of the Poques/PokerScript language is meant to mimic the language and terms that poker players uses when they are on the poker table.  
+The usage of the PokerScript language is meant to mimic the language and terms that poker players uses when they are on the poker table.  
 
 ## Features
 
