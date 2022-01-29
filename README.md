@@ -1,4 +1,3 @@
-![Logo](https://raw.githubcontent.com/nutoro/PokerScript/main/docs/PokerScript#1.png)
 
 # PokerScript
 Compiler for the language PokerScript 
