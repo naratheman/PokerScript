@@ -1,5 +1,5 @@
 # PokerScript
-Compiler for the language PokerScript (CMSI-3802)
+Compiler for the language PokerScript 
 
 
 # The language PokerScript
