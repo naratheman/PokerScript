@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Compiler for PokerScript",
   "main": "src/PokerScript.js",
+  "type": "module",
   "directories": {
     "doc": "docs",
     "example": "examples",
