@@ -1,4 +1,4 @@
-<img src="docs/PSlogo.png" width="500" height="600" >
+![logo](docs/PSlogo.png)
 
 # PokerScript
 Compiler for the language PokerScript 
