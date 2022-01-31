@@ -144,8 +144,6 @@ contemplating(condition)
 </td>
 </table>
 
-### For Loops
-
 ### For-Loops
 
 - For loops in PokerScript must have two or three statements within them
