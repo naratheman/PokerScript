@@ -4,9 +4,9 @@
 
 Compiler for the language PokerScript
 
-## The language PokerScript
+## Welcome to PokerScript
 
-To the non-player, poker seems to be a game of chance. After all, it revolves around a deck of cards. Doesn't the hand that's dealt
+To the non-player, poker seems to be a game of chance. After all, it revolves around a shuffled deck of cards. Doesn't the hand that's dealt
 decide one's fate?
 
 We, the creators of PokerScript, know this not to be true. Poker is a game of skill. Our language celebrates the unique
@@ -17,7 +17,11 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 
 ## Features
 
-- Static typing?
+- Static typing
+- Recursion
+- Tuples
+- List Comprehension
+- `.ps` file extension
 
 ## Types
 
@@ -47,13 +51,13 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 
 ## Arithmetic
 
-- sum =
-- difference =
-- multiplication =
-- integer division =
-- float division =
-- exponents =
-- modulus =
+- sum = 9 + 10
+- difference = 9 - 10
+- multiplication = 9 \* 10
+- integer division = 9 / 10
+- float division = 9 // 10
+- exponents (9^10) = bigspender(9, 10)
+- modulus = 9 % 10
 
 ## Keywords
 
@@ -66,15 +70,15 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 | straddle         | function    |
 | excuses          | if          |
 | followingexcuses | else if     |
-|                  | else        |
-|                  | switch      |
-|                  | case        |
+| nomoreexcuses    | else        |
+| change           | switch      |
+| ifdealt          | case        |
 | blind            | default     |
 | broke            | void        |
-|                  | for         |
-|                  | async       |
-|                  | print       |
-| redeal           | return      |
+| bet              | for         |
+| dealer           | async       |
+| reveal           | print       |
+| cashout          | return      |
 | deal             | var         |
 
 ## Control Flow
@@ -108,7 +112,7 @@ this is a multiline comment
 /rude
 ```
 
-## Examples Programs
+## Example Programs
 
 ### **JavaScript** on the left; **PokerScript** on the right.
 
