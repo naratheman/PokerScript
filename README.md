@@ -93,11 +93,40 @@ excuses x == 0 $
  $
 ```
 
-### While Loops
+### While, Do-While loops
+
+<table>
+<tr> <th>JavaScript</th><th>Speare</th><tr>
+</tr>
+
+<td>
+
+```javascript
+do {
+  print("what is taking so long!?")
+} while (condition)
+```
+
+</td>
+
+<td>
+
+```
+action $
+  reveal("What is taking so long!?")
+$
+contemplating(condition)
+```
+
+</td>
+</table>
 
 ### For Loops
 
-### For Loops with Spread
+```
+
+
+
 
 ## Comments
 
@@ -105,14 +134,16 @@ In Poker, it's rude to comment on the way people play. Hence,
 Single line comments are marked with `rude` and multiline comments are marked with `rude/` at the beginning and `/rude` at the end.
 
 ```
+
 rude this is a single line comment
 
 rude/
 this is a multiline comment
 /rude
+
 ```
 
-## Example Programs
+## More Example Programs
 
 ### **JavaScript** on the left; **PokerScript** on the right.
 
@@ -120,7 +151,11 @@ Function Declaration
 @JavaScript @PokerScript
 
 ```
-function add (a, b) {                         straddle add (a, b) $
-    return a + b;                                   cashout a + b
-}	                                            $
+
+function add (a, b) { straddle add (a, b) $
+return a + b; cashout a + b
+} $
+
+```
+
 ```
