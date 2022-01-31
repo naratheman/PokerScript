@@ -85,18 +85,41 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 
 ### If Statements
 
+<table>
+<tr> <th>JavaScript</th><th>PokerScript</th><tr>
+</tr>
+
+<td>
+
+```javascript
+if x = 0{
+  return true;
+  else if{
+  return false;
+  }
+}
+```
+
+</td>
+
+<td>
+
 ```
 excuses x == 0 $
   redeal hit
  followingexcuses $
   redeal miss
- $
+  $
+$
 ```
+
+</td>
+</table>
 
 ### While, Do-While loops
 
 <table>
-<tr> <th>JavaScript</th><th>Speare</th><tr>
+<tr> <th>JavaScript</th><th>PokerScript</th><tr>
 </tr>
 
 <td>
@@ -123,10 +146,38 @@ contemplating(condition)
 
 ### For Loops
 
+### For-Loops
+
+- For loops in PokerScript must have two or three statements within them
+
+<table>
+<tr> <th>JavaScript</th><th>PokerScript</th><tr>
+</tr>
+
+<td>
+
+```javascript
+for (int x = 0; x < 10; x++) {
+  for (int y = 0; y < 20; y++) {
+    y += 5;
+  }
+}
 ```
 
+</td>
 
+<td>
 
+```
+playingloose(chip x = 0, x lower 10, x increment) {
+  playingloose (chip y = 0, y lower 20, y increment) {
+    y incrementby 5
+  }
+}
+```
+
+</td>
+</table>
 
 ## Comments
 
@@ -155,6 +206,8 @@ Function Declaration
 function add (a, b) { straddle add (a, b) $
 return a + b; cashout a + b
 } $
+
+```
 
 ```
 
