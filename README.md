@@ -202,13 +202,7 @@ Function Declaration
 @JavaScript @PokerScript
 
 ```
-
 function add (a, b) { straddle add (a, b) $
 return a + b; cashout a + b
 } $
-
-```
-
-```
-
 ```
