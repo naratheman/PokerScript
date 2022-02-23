@@ -201,14 +201,14 @@ this is a multiline comment
 </tr>
 <td>
 ```
-function add (a, b)
+function add (a, b){
 return a + b;
-```
+}```
 </td>
 <td>
-```{ straddle add (a, b) $
+```straddle add (a, b) $
 cashout a + b
-} $```
+$```
 
 </td>
 </table>
