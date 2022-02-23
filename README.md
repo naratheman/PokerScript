@@ -196,19 +196,27 @@ this is a multiline comment
 
 ### **JavaScript** on the left; **PokerScript** on the right.
 
+
 <table>
 <tr> <th>JavaScript</th><th>PokerScript</th><tr>
 </tr>
+
 <td>
-```
+
+```javascript
 function add (a, b){
 return a + b;
-}```
+}
+```
+
 </td>
+
 <td>
-```straddle add (a, b) $
+
+```
+straddle add (a, b) $
 cashout a + b
-$```
+```
 
 </td>
 </table>
