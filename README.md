@@ -200,7 +200,7 @@ this is a multiline comment
 <tr> <th>JavaScript</th><th>PokerScript</th><tr>
 </tr>
 <td>
-```javascript
+```
 function add (a, b)
 return a + b;
 ```
