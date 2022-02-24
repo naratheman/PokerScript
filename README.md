@@ -43,7 +43,7 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 | JavaScript                               | PokerScript                                                 |
 | ---------------------------------------- | -------------------------------------------------           |
 | let x = 5;                               | chip x: 5                                                   |
-| let y = “hello!”;                        | stringbet y: “hello!”                                       |
+| let y = “hello!”;                        | stringBet y: “hello!”                                       |
 | let z = 100.52;                          | change z: 100.52                                            |
 | let t = true;                            | playingontilt t: hit                                        |
 | let f = false;                           | playingontilt f: miss                                       |
