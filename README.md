@@ -105,9 +105,9 @@ if x = 0{
 
 ```
 excuses x == 0 $.
-  redeal hit
+  cashout hit
  followingexcuses $.
-  redeal miss
+  cashout miss
   .$
 .$
 ```
