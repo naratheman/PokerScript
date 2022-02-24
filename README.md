@@ -104,12 +104,12 @@ if x = 0{
 <td>
 
 ```
-excuses x == 0 $
+excuses x == 0 $.
   redeal hit
- followingexcuses $
+ followingexcuses $.
   redeal miss
-  $
-$
+  .$
+.$
 ```
 
 </td>
@@ -134,10 +134,9 @@ do {
 <td>
 
 ```
-action $
+action $.
   reveal("What is taking so long!?")
-$
-contemplating(condition)
+.$ contemplating(condition)
 ```
 
 </td>
@@ -145,7 +144,7 @@ contemplating(condition)
 
 ### For-Loops
 
-- For loops in PokerScript must have two or three statements within them
+- For loops in PokerScript must have two or three statements within them.
 
 <table>
 <tr> <th>JavaScript</th><th>PokerScript</th><tr>
@@ -166,11 +165,11 @@ for (int x = 0; x < 10; x++) {
 <td>
 
 ```
-playingloose(chip x = 0, x lower 10, x increment) {
-  playingloose (chip y = 0, y lower 20, y increment) {
+playingloose(chip x = 0, x lower 10, x increment) $.
+  playingloose (chip y = 0, y lower 20, y increment) $.
     y incrementby 5
-  }
-}
+  .$
+.$
 ```
 
 </td>
@@ -203,8 +202,8 @@ this is a multiline comment
 <td>
 
 ```javascript
-function add (a, b){
-return a + b;
+function add (a, b) {
+  return a + b;
 }
 ```
 
@@ -213,9 +212,9 @@ return a + b;
 <td>
 
 ```
-straddle add (a, b) $
-cashout a + b
-$
+straddle add (a, b) $.
+  cashout a + b
+.$
 ```
 
 </td>
