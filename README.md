@@ -215,6 +215,7 @@ return a + b;
 ```
 straddle add (a, b) $
 cashout a + b
+$
 ```
 
 </td>
