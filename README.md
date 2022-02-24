@@ -219,3 +219,24 @@ straddle add (a, b) $.
 
 </td>
 </table>
+
+<table>
+<tr> <th>JavaScript</th><th>PokerScript</th><tr>
+</tr>
+
+<td>
+
+```javascript
+let myarray = [2, 4, 6];
+```
+
+</td>
+
+<td>
+
+```
+flop chip myarray = [2, 4, 6];
+```
+
+</td>
+</table>
