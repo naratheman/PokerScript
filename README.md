@@ -36,7 +36,7 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 
 | JavaScript                      | PokerScript                                |
 | ------------------------------- | ------------------------------------------ |
-| console.log(“Place your bets”); | reveal “Place your bets” “place your bets” |
+| console.log(“Place your bets”); | reveal “Place your bets”                   |
 
 ## Variable Declaration and Assignment
 
