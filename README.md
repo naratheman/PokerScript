@@ -25,11 +25,11 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 
 ## Types
 
-| JavaScript | PokerScript.     |
+| Types      | PokerScript.     |
 | ---------- | ---------------- |
 | string     | stringbet        |
-| number     | chip             |
-| const      | constantpressure |
+| integer    | chip             |
+| float      | change           |
 | bool       | playingontilt    |
 
 ## Built In Functions
@@ -40,14 +40,14 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 
 ## Variable Declaration and Assignment
 
-| JavaScript                               | PokerScript                                       |
-| ---------------------------------------- | ------------------------------------------------- |
-| let x = 5;                               | chip x: 5                                         |
-| let y = “hello!”;                        | stringbet y: “hello!”                             |
-| let z = 100.52;                          | stringbets z: 100.52                              |
-| let t = true;                            | playingontilt t: hit                              |
-| let f = false;                           | playingontilt f: miss                             |
-| const name = “I should be winning more”; | constantpressure name: “I should be winning more” |
+| JavaScript                               | PokerScript                                                 |
+| ---------------------------------------- | -------------------------------------------------           |
+| let x = 5;                               | chip x: 5                                                   |
+| let y = “hello!”;                        | stringbet y: “hello!”                                       |
+| let z = 100.52;                          | change z: 100.52                                            |
+| let t = true;                            | playingontilt t: hit                                        |
+| let f = false;                           | playingontilt f: miss                                       |
+| const name = “I should be winning more”; | constantpressure stringbet name: “I should be winning more” |
 
 ## Arithmetic
 
@@ -66,7 +66,6 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 | fold             | break       |
 | miss             | false       |
 | hit              | true        |
-| gamebreak        | break       |
 | straddle         | function    |
 | excuses          | if          |
 | followingexcuses | else if     |
