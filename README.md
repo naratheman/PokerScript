@@ -235,7 +235,7 @@ let myarray = [2, 4, 6];
 <td>
 
 ```
-flop chip myarray = [2, 4, 6];
+flop chip myarray = [2, 4, 6]
 ```
 
 </td>
