@@ -165,8 +165,8 @@ for (int x = 0; x < 10; x++) {
 <td>
 
 ```
-playingloose(chip x = 0, x lower 10, x increment) $.
-  playingloose (chip y = 0, y lower 20, y increment) $.
+playingLoose(chip x = 0, x lower 10, x increment) $.
+  playingLoose (chip y = 0, y lower 20, y increment) $.
     y incrementby 5
   .$
 .$
