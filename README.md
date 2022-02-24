@@ -27,10 +27,10 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 
 | Types      | PokerScript.     |
 | ---------- | ---------------- |
-| string     | stringbet        |
+| string     | stringBet        |
 | integer    | chip             |
 | float      | change           |
-| bool       | playingontilt    |
+| bool       | playingOnTilt    |
 
 ## Built In Functions
 
