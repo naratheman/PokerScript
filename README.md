@@ -45,9 +45,9 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 | let x = 5;                               | chip x: 5                                                   |
 | let y = “hello!”;                        | stringBet y: “hello!”                                       |
 | let z = 100.52;                          | change z: 100.52                                            |
-| let t = true;                            | playingontilt t: hit                                        |
-| let f = false;                           | playingontilt f: miss                                       |
-| const name = “I should be winning more”; | constantpressure stringbet name: “I should be winning more” |
+| let t = true;                            | playingOnTilt t: hit                                        |
+| let f = false;                           | playingOnTilt f: miss                                      |
+| const name = “I should be winning more”; | constantPressure stringBet name: "I should be winning more" |
 
 ## Arithmetic
 
