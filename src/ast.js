@@ -187,7 +187,7 @@ const astBuilder = carlosGrammar.createSemantics().addOperation("ast", {
 })
 
 export default function ast(sourceCode) {
-  const match = carlosGrammar.match(sourceCode)
+  const match = PokerScriptGrammar.match(sourceCode)
   if (!match.succeeded()) {
     throw new Error(match.message)
   }
