@@ -43,7 +43,9 @@ PokerScript {
             | Call
             | id
             | "(" Exp ")"                                      -- parens
-            | "\"" char* "\""
+            | "\"" char* "\""								  --character
+            | "[]" "(" Type ")"                     --emptyarray
+            | "[" NonemptyListOf<Exp, ","> "]"         --arrayexp
  
   char        = ~control ~"\\" ~"\"" any
               | "\\" ("n" | "t" | "\"" | "\\")                --escape
