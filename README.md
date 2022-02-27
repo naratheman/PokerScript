@@ -68,8 +68,8 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 | hit              | true        |
 | straddle         | function    |
 | excuses          | if          |
-| followingexcuses | else if     |
-| nomoreexcuses    | else        |
+| followingExcuses | else if     |
+| nomoreExcuses    | else        |
 | change           | switch      |
 | ifdealt          | case        |
 | blind            | default     |
@@ -93,7 +93,7 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 ```javascript
 if x = 0{
   return true;
-  else if{
+  } else if {
   return false;
   }
 }
@@ -106,10 +106,10 @@ if x = 0{
 ```
 excuses x == 0 $.
   cashout hit
- followingexcuses $.
-  cashout miss
-  .$
 .$
+followingExcuses (hit) $.
+	cashout miss
+    .$
 ```
 
 </td>
