@@ -4,9 +4,9 @@ import fs from "fs"
 import ohm from "ohm-js"
 import * as core from "./core.js"
 
-const carlosGrammar = ohm.grammar(fs.readFileSync("src/carlos.ohm"))
+const psGrammar = ohm.grammar(fs.readFileSync("src/Pokerscript.ohm"))
 
-const astBuilder = carlosGrammar.createSemantics().addOperation("ast", {
+const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   Program(body) {
     return new core.Program(body.ast())
   },
