@@ -18,6 +18,11 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
       initializer.ast()
     )
   },
+
+  Statement_print(argument, _colon) {
+    return new core.PrintStatement(argument.ast())
+  },
+
   // TypeDecl(_struct, id, _left, fields, _right) {
   //   return new core.TypeDeclaration(new core.StructType(id.ast(), fields.ast()))
   // },

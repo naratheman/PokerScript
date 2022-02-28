@@ -8,6 +8,12 @@ export class Program {
   }
 }
 
+export class PrintStatement {
+  constructor(argument) {
+    Object.assign(this, { argument })
+  }
+}
+
 export class VariableDeclaration {
   // Example: constantPressure chip dozen: 12;
   constructor(modifier, type, variable, initializer) {
