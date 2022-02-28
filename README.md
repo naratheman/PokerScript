@@ -106,7 +106,7 @@ if x == 0{
 excuses x == 0 $.
   cashout hit
 .$
-noMoreExcuses (hit) $.
+noMoreExcuses $.
 	cashout miss
     .$
 ```
