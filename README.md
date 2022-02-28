@@ -139,7 +139,7 @@ chip patience: 3
 action $.
   reveal("What is taking so long!?")
   patience decrement
-.$ contemplating(patience)
+.$ contemplating(patience != 0)
 ```
 
 </td>
