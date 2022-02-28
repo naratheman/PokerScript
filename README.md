@@ -107,8 +107,8 @@ excuses x == 0 $.
   cashout hit
 .$
 noMoreExcuses $.
-	cashout miss
-    .$
+  cashout miss
+.$
 ```
 
 </td>
