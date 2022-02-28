@@ -69,12 +69,12 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 | straddle         | function    |
 | excuses          | if          |
 | followingExcuses | else if     |
-| nomoreExcuses    | else        |
-| change           | switch      |
+| noMoreExcuses    | else        |
+| sleight          | switch      |
 | ifdealt          | case        |
 | blind            | default     |
 | broke            | void        |
-| bet              | for         |
+| playingLoose     | for         |
 | dealer           | async       |
 | reveal           | print       |
 | cashout          | return      |
@@ -91,9 +91,9 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 <td>
 
 ```javascript
-if x = 0{
+if x == 0{
   return true;
-  } else if {
+  } else {
   return false;
   }
 ```
@@ -106,9 +106,9 @@ if x = 0{
 excuses x == 0 $.
   cashout hit
 .$
-followingExcuses (hit) $.
-	cashout miss
-    .$
+noMoreExcuses $.
+  cashout miss
+.$
 ```
 
 </td>
@@ -123,9 +123,11 @@ followingExcuses (hit) $.
 <td>
 
 ```javascript
+let patience = 3
 do {
   print("what is taking so long!?")
-} while (condition)
+  patience--
+} while (patience != 0)
 ```
 
 </td>
@@ -133,9 +135,11 @@ do {
 <td>
 
 ```
+chip patience: 3
 action $.
   reveal("What is taking so long!?")
-.$ contemplating(condition)
+  patience decrement
+.$ contemplating(patience)
 ```
 
 </td>
@@ -152,9 +156,10 @@ action $.
 <td>
 
 ```javascript
+let winnings = 0
 for (int x = 0; x < 10; x++) {
   for (int y = 0; y < 20; y++) {
-    y += 5;
+    winnings += 5;
   }
 }
 ```
@@ -164,9 +169,10 @@ for (int x = 0; x < 10; x++) {
 <td>
 
 ```
+chip winnings: 0
 playingLoose(chip x = 0, x lower 10, x increment) $.
   playingLoose (chip y = 0, y lower 20, y increment) $.
-    y incrementby 5
+    winnings incrementby 5
   .$
 .$
 ```
