@@ -5,7 +5,7 @@ import ast from "../src/ast.js"
 
 // Programs expected to be syntactically correct
 const syntaxChecks = [
-  ["print statements", "reveal "Place your bets""],
+  ["print statements", 'reveal "Place your bets"'],
   ["integer declaration", "chip x: 5"],
   // ["variable declarations", "let e=99*1;\nconst z=false;"],
   // ["type declarations", "struct S {x:T1 y:T2 z:bool}"],

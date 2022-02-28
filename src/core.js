@@ -9,7 +9,7 @@ export class Program {
 }
 
 export class VariableDeclaration {
-  // Example: const dozen = 12;
+  // Example: constantPressure chip dozen: 12;
   constructor(modifier, type, variable, initializer) {
     Object.assign(this, { modifier, type, variable, initializer })
   }
