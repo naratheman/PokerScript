@@ -123,9 +123,11 @@ noMoreExcuses $.
 <td>
 
 ```javascript
+let patience = 3
 do {
   print("what is taking so long!?")
-} while (condition)
+  patience--
+} while (patience != 0)
 ```
 
 </td>
@@ -133,9 +135,11 @@ do {
 <td>
 
 ```
+chip patience: 3
 action $.
   reveal("What is taking so long!?")
-.$ contemplating(condition)
+  patience = patience - 1
+.$ contemplating(patience)
 ```
 
 </td>
@@ -152,9 +156,10 @@ action $.
 <td>
 
 ```javascript
+let winnings = 0
 for (int x = 0; x < 10; x++) {
   for (int y = 0; y < 20; y++) {
-    y += 5;
+    winnings += 5;
   }
 }
 ```
@@ -164,9 +169,10 @@ for (int x = 0; x < 10; x++) {
 <td>
 
 ```
+chip winnings: 0
 playingLoose(chip x = 0, x lower 10, x increment) $.
   playingLoose (chip y = 0, y lower 20, y increment) $.
-    y incrementby 5
+    winnings incrementby 5
   .$
 .$
 ```
