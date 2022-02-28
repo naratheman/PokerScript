@@ -14,7 +14,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     return new core.VariableDeclaration(
       modifier.ast(),
       type.sourceString,
-      id.ast(),
+      id.sourceString,
       initializer.ast()
     )
   },
@@ -92,9 +92,9 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   //   // No need for a block node, just return the list of statements
   //   return body.ast()
   // },
-  Exp_unary(op, operand) {
-    return new core.UnaryExpression(op.sourceString, operand.ast())
-  },
+  // Exp_unary(op, operand) {
+  //   return new core.UnaryExpression(op.sourceString, operand.ast())
+  // },
   // Exp1_or(left, _ops, right) {
   //   const operands = [left.ast(), ...right.ast()]
   //   return operands.reduce((x, y) => new core.BinaryExpression("||", x, y))
