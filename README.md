@@ -46,7 +46,7 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 | let y = “hello!”;                        | stringBet y: “hello!”                                       |
 | let z = 100.52;                          | change z: 100.52                                            |
 | let t = true;                            | playingOnTilt t: hit                                        |
-| let f = false;                           | playingOnTilt f: miss                                      |
+| let f = false;                           | playingOnTilt f: miss                                       |
 | const name = “I should be winning more”; | constantPressure stringBet name: "I should be winning more" |
 
 ## Arithmetic
@@ -70,7 +70,7 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 | excuses          | if          |
 | followingExcuses | else if     |
 | nomoreExcuses    | else        |
-| change           | switch      |
+| sleight          | switch      |
 | ifdealt          | case        |
 | blind            | default     |
 | broke            | void        |
@@ -91,9 +91,9 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 <td>
 
 ```javascript
-if x = 0{
+if x == 0{
   return true;
-  } else if {
+  else if {
   return false;
   }
 }
