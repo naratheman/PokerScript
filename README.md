@@ -69,7 +69,7 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 | straddle         | function    |
 | excuses          | if          |
 | followingExcuses | else if     |
-| nomoreExcuses    | else        |
+| noMoreExcuses    | else        |
 | sleight          | switch      |
 | ifdealt          | case        |
 | blind            | default     |
