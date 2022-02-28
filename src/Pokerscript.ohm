@@ -79,5 +79,5 @@ PokerScript {
     idchar    = letter | digit | "_"
     keyword   = straddle | contemplating | hit | miss | playingLoose | action
 
-    space += "rude" (~ "\n" any)* ("\n"|end)
+    space += "rude" (~ "\n" any)* ("\n"|end)                   --comment
 }
