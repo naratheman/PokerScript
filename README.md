@@ -93,7 +93,7 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 ```javascript
 if x == 0{
   return true;
-  } else if {
+  } else {
   return false;
   }
 ```
@@ -106,7 +106,7 @@ if x == 0{
 excuses x == 0 $.
   cashout hit
 .$
-followingExcuses (hit) $.
+noMoreExcuses (hit) $.
 	cashout miss
     .$
 ```
