@@ -25,28 +25,28 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 
 ## Types
 
-| Types      | PokerScript.     |
-| ---------- | ---------------- |
-| string     | stringBet        |
-| integer    | chip             |
-| float      | change           |
-| bool       | playingOnTilt    |
+| Types   | PokerScript.  |
+| ------- | ------------- |
+| string  | stringBet     |
+| integer | chip          |
+| float   | change        |
+| bool    | playingOnTilt |
 
 ## Built In Functions
 
-| JavaScript                      | PokerScript                                |
-| ------------------------------- | ------------------------------------------ |
-| console.log(“Place your bets”); | reveal “Place your bets”                   |
+| JavaScript                      | PokerScript              |
+| ------------------------------- | ------------------------ |
+| console.log(“Place your bets”); | reveal “Place your bets” |
 
 ## Variable Declaration and Assignment
 
 | JavaScript                               | PokerScript                                                 |
-| ---------------------------------------- | -------------------------------------------------           |
+| ---------------------------------------- | ----------------------------------------------------------- |
 | let x = 5;                               | chip x: 5                                                   |
 | let y = “hello!”;                        | stringBet y: “hello!”                                       |
 | let z = 100.52;                          | change z: 100.52                                            |
 | let t = true;                            | playingOnTilt t: hit                                        |
-| let f = false;                           | playingOnTilt f: miss                                      |
+| let f = false;                           | playingOnTilt f: miss                                       |
 | const name = “I should be winning more”; | constantPressure stringBet name: "I should be winning more" |
 
 ## Arithmetic
@@ -96,7 +96,6 @@ if x = 0{
   } else if {
   return false;
   }
-}
 ```
 
 </td>
@@ -194,7 +193,6 @@ this is a multiline comment
 
 ### **JavaScript** on the left; **PokerScript** on the right.
 
-
 <table>
 <tr> <th>JavaScript</th><th>PokerScript</th><tr>
 </tr>
@@ -202,8 +200,8 @@ this is a multiline comment
 <td>
 
 ```javascript
-function add (a, b) {
-  return a + b;
+function add(a, b) {
+  return a + b
 }
 ```
 
@@ -227,7 +225,7 @@ straddle add (a, b) $.
 <td>
 
 ```javascript
-let myarray = [2, 4, 6];
+let myarray = [2, 4, 6]
 ```
 
 </td>
