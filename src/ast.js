@@ -10,10 +10,11 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   Program(body) {
     return new core.Program(body.ast())
   },
-  VarDecl(modifier, id, _eq, initializer, _semicolon) {
+  VarDecl(modifier, id, type, _eq, initializer, _semicolon) {
     return new core.VariableDeclaration(
       modifier.sourceString,
       id.ast(),
+      type.ast(),
       initializer.ast()
     )
   },

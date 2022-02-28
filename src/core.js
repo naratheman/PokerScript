@@ -163,20 +163,6 @@ export class RepeatStatement {
   }
 }
 
-export class ForRangeStatement {
-  // Example: for i in 0..<10 { process(i << 2); }
-  constructor(iterator, low, op, high, body) {
-    Object.assign(this, { iterator, low, high, op, body })
-  }
-}
-
-export class ForStatement {
-  // Example: for ball in balls { ball.bounce();  }
-  constructor(iterator, collection, body) {
-    Object.assign(this, { iterator, collection, body })
-  }
-}
-
 export class Conditional {
   // Example: latitude >= 0 ? "North" : "South"
   constructor(test, consequent, alternate) {
@@ -205,13 +191,6 @@ export class EmptyOptional {
   }
 }
 
-export class SubscriptExpression {
-  // Example: a[20]
-  constructor(array, index) {
-    Object.assign(this, { array, index })
-  }
-}
-
 export class ArrayExpression {
   // Example: ["Emma", "Norman", "Ray"]
   constructor(elements) {
@@ -226,12 +205,12 @@ export class EmptyArray {
   }
 }
 
-export class MemberExpression {
-  // Example: state.population
-  constructor(object, field) {
-    Object.assign(this, { object, field })
-  }
-}
+// export class MemberExpression {
+//   // Example: state.population
+//   constructor(object, field) {
+//     Object.assign(this, { object, field })
+//   }
+// }
 
 export class Call {
   // Example: move(player, 90, "west")
