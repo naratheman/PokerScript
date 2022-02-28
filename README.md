@@ -74,7 +74,7 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 | ifdealt          | case        |
 | blind            | default     |
 | broke            | void        |
-| bet              | for         |
+| playingLoose     | for         |
 | dealer           | async       |
 | reveal           | print       |
 | cashout          | return      |
