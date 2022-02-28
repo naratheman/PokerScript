@@ -93,10 +93,9 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 ```javascript
 if x == 0{
   return true;
-  else if {
+  } else if {
   return false;
   }
-}
 ```
 
 </td>
