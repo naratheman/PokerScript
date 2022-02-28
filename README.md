@@ -170,8 +170,8 @@ for (int x = 0; x < 10; x++) {
 
 ```
 chip winnings: 0
-playingLoose(chip x = 0, x lower 10, x increment) $.
-  playingLoose (chip y = 0, y lower 20, y increment) $.
+playingLoose(chip x: 0, x lower 10, x increment) $.
+  playingLoose (chip y: 0, y lower 20, y increment) $.
     winnings incrementby 5
   .$
 .$

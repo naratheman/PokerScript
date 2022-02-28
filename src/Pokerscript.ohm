@@ -78,4 +78,6 @@ PokerScript {
 	id        = ~keyword letter idchar*
     idchar    = letter | digit | "_"
     keyword   = straddle | contemplating | hit | miss | playingLoose | action
+
+    space += "rude" (~ "\n" any)* ("\n"|end)                   --comment
 }
