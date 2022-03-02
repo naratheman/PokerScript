@@ -10,7 +10,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   Program(body) {
     return new core.Program(body.ast())
   },
-  VarDecl(modifier, type, id, _colon, initializer) {
+  VarDec(modifier, type, id, _colon, initializer) {
     return new core.VariableDeclaration(
       modifier.ast(),
       type.sourceString,
@@ -23,6 +23,13 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     return new core.PrintStatement(argument.ast())
   },
 
+  Statement_assign(variable, _eq, expression) {
+    return new core.Assignment(variable.ast(), expression.ast())
+  },
+
+  // Statement_assign(variable, _eq, expression, _semicolon) {
+  //   return new core.Assignment(variable.ast(), expression.ast())
+  // },
   // TypeDecl(_struct, id, _left, fields, _right) {
   //   return new core.TypeDeclaration(new core.StructType(id.ast(), fields.ast()))
   // },
