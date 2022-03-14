@@ -23,8 +23,28 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     return new core.PrintStatement(argument.ast())
   },
 
-  Statement_assign(variable, _eq, expression) {
+  Assign(variable, _eq, expression) {
     return new core.Assignment(variable.ast(), expression.ast())
+  },
+
+  ForLoop(
+    _playingLoose,
+    _open,
+    _chip,
+    assign,
+    _comma,
+    breakCondition,
+    _comma2,
+    bump,
+    _close,
+    block
+  ) {
+    return new core.ForLoop(
+      assign.ast(),
+      breakCondition.ast(),
+      bump.ast(),
+      block.ast()
+    )
   },
 
   // Statement_assign(variable, _eq, expression, _semicolon) {

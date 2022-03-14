@@ -69,6 +69,12 @@ export class FunctionDeclaration {
   }
 }
 
+export class ForLoop {
+  constructor(declaration, breakCondition, incDec, body) {
+    Object.assign(this, { declaration, breakCondition, incDec, body })
+  }
+}
+
 export class Function {
   // Generated when processing a function declaration
   constructor(name, parameters, returnType) {
