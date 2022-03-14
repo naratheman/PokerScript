@@ -8,6 +8,12 @@ export class Program {
   }
 }
 
+export class Block {
+  constructor(statements) {
+    this.statements = statements
+  }
+}
+
 export class PrintStatement {
   constructor(argument) {
     Object.assign(this, { argument })

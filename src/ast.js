@@ -10,7 +10,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   Program(body) {
     return new core.Program(body.ast())
   },
-  VarDec(modifier, type, id, _colon, initializer) {
+  Statement_vardec(modifier, type, id, _colon, initializer) {
     return new core.VariableDeclaration(
       modifier.ast(),
       type.sourceString,
@@ -36,14 +36,16 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   // Field(id, _colon, type) {
   //   return new core.Field(id.ast(), type.ast())
   // },
-  // FunDecl(_fun, id, _open, params, _close, _colons, returnType, body) {
-  //   return new core.FunctionDeclaration(
-  //     id.ast(),
-  //     params.asIteration().ast(),
-  //     returnType.ast()[0] ?? null,
-  //     body.ast()
-  //   )
-  // },
+  Statement_fundec(_straddle, id, _open, params, _close, block) {
+    return new core.FunctionDeclaration(
+      id.ast(),
+      params.asIteration().ast(),
+      block.ast()
+    )
+  },
+  Block(_open, statements, _close) {
+    return new core.Block(statements)
+  },
   // Param(id, _colon, type) {
   //   return new core.Parameter(id.sourceString, type.ast())
   // },
@@ -184,9 +186,9 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   // Exp9_call(callee, _left, args, _right) {
   //   return new core.Call(callee.ast(), args.asIteration().ast())
   // },
-  // id(_first, _rest) {
-  //   return new core.Token("Id", this.source)
-  // },
+  id(_first, _rest) {
+    return new core.Token("Id", this.source)
+  },
   // true(_) {
   //   return new core.Token("Bool", this.source)
   // },
@@ -196,22 +198,22 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   // intlit(_digits) {
   //   return new core.Token("Int", this.source)
   // },
-  // floatlit(_whole, _point, _fraction, _e, _sign, _exponent) {
-  //   return new core.Token("Float", this.source)
-  // },
-  // stringlit(_openQuote, chars, _closeQuote) {
-  //   return new core.Token("Str", this.source)
-  // },
-  // _terminal() {
-  //   return new core.Token("Sym", this.source)
-  // },
-  // _iter(...children) {
-  //   return children.map((child) => child.ast())
-  // },
+  num(_whole, _point, _fraction, _e, _sign, _exponent) {
+    return new core.Token("Float", this.source)
+  },
+  stringlit(_openQuote, chars, _closeQuote) {
+    return new core.Token("Str", this.source)
+  },
+  _terminal() {
+    return new core.Token("Sym", this.source)
+  },
+  _iter(...children) {
+    return children.map((child) => child.ast())
+  },
 })
 
 export default function ast(sourceCode) {
-  const match = PokerScriptGrammar.match(sourceCode)
+  const match = psGrammar.match(sourceCode)
   if (!match.succeeded()) {
     throw new Error(match.message)
   }
