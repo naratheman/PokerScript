@@ -153,7 +153,7 @@ export class ShortReturnStatement {
   // Intentionally empty
 }
 
-export class IfStatement {
+export class LongIfStatement {
   // Example: if x < 3 { print(100); } else { break; }
   constructor(test, consequent, alternate) {
     Object.assign(this, { test, consequent, alternate })
@@ -295,6 +295,7 @@ Program.prototype[util.inspect.custom] = function () {
       return util.inspect(e)
     }
     for (let [node, id] of [...tags.entries()].sort((a, b) => a[1] - b[1])) {
+      console.log(id)
       let type = node.constructor.name
       let props = Object.entries(node).map(([k, v]) => `${k}=${view(v)}`)
       yield `${String(id).padStart(4, " ")} | ${type} ${props.join(" ")}`

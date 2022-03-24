@@ -6,10 +6,11 @@ PokerScript {
               | Bump                           -- bump
               | print Exp                                     -- print
               | return Exp							          -- return
-              | contemplating Exp Block                         -- while
-              | excuses Exp Block 
+              | contemplating Exp Block                        -- while
+              | excuses Exp Block                               --ifShort
+              | excuses Exp Block
                 (followingExcuses Exp Block)* 
-                (noMoreExcuses Block)?                          -- if
+                (noMoreExcuses Block)?                          -- ifLong
               | ForLoop
               | Exp
              
@@ -31,8 +32,6 @@ PokerScript {
 
  	Exp       = ("-" | "!") Exp8                               -- unary
               | Exp1 "?" Exp1 ":" Exp                            -- ternary
-              | Exp1 "+$"                                      -- increment
-              | Exp1 "-$"                                      -- decrement
               | Exp1
 	Exp1      = Exp1 "||" Exp2                                 -- binary
               | Exp2

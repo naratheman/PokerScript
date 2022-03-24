@@ -64,7 +64,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     )
   },
   Block(_open, statements, _close) {
-    return new core.Block(statements)
+    return new core.Block(statements.ast())
   },
   // Param(id, _colon, type) {
   //   return new core.Parameter(id.sourceString, type.ast())
@@ -92,21 +92,36 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   // Statement_break(_break, _semicolon) {
   //   return new core.BreakStatement()
   // },
-  // Statement_return(_return, expression, _semicolon) {
-  //   return new core.ReturnStatement(expression.ast())
-  // },
+  Statement_return(_return, expression) {
+    return new core.ReturnStatement(expression.ast())
+  },
   // Statement_shortreturn(_return, _semicolon) {
   //   return new core.ShortReturnStatement()
   // },
   // IfStmt_long(_if, test, consequent, _else, alternate) {
   //   return new core.IfStatement(test.ast(), consequent.ast(), alternate.ast())
   // },
-  // IfStmt_short(_if, test, consequent) {
-  //   return new core.ShortIfStatement(test.ast(), consequent.ast())
-  // },
-  // LoopStmt_while(_while, test, body) {
-  //   return new core.WhileStatement(test.ast(), body.ast())
-  // },
+  Statement_ifLong(
+    _if,
+    test,
+    consequent,
+    _elif,
+    _test2,
+    _conseq2,
+    _else,
+    _conseq3
+  ) {
+    return new core.LongIfStatement(test.ast(), consequent.ast())
+  },
+  Statement_ifShort(_if, test, consequent) {
+    return new core.ShortIfStatement(test.ast(), consequent.ast())
+  },
+  Statement_while(_while, test, body) {
+    return new core.WhileStatement(test.ast(), body.ast())
+  },
+  Bump(_op, operand) {
+    return new core.Increment(operand.ast())
+  },
   // LoopStmt_repeat(_repeat, count, body) {
   //   return new core.RepeatStatement(count.ast(), body.ast())
   // },
@@ -155,10 +170,9 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   //   const operands = [left.ast(), ...right.ast()]
   //   return operands.reduce((x, y) => new core.BinaryExpression("&&", x, y))
   // },
-  // Exp3_bitor(left, _ops, right) {
-  //   const operands = [left.ast(), ...right.ast()]
-  //   return operands.reduce((x, y) => new core.BinaryExpression("|", x, y))
-  // },
+  Exp3_binary(left, op, right) {
+    return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
+  },
   // Exp3_bitxor(left, _ops, right) {
   //   const operands = [left.ast(), ...right.ast()]
   //   return operands.reduce((x, y) => new core.BinaryExpression("^", x, y))
@@ -173,9 +187,9 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   // Exp5_shift(left, op, right) {
   //   return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
   // },
-  // Exp6_add(left, op, right) {
-  //   return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
-  // },
+  Exp4_binary(left, op, right) {
+    return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
+  },
   // Exp7_multiply(left, op, right) {
   //   return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
   // },
