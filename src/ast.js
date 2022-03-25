@@ -23,8 +23,12 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     return new core.PrintStatement(argument.ast())
   },
 
-  Assign(variable, _eq, expression) {
-    return new core.Assignment(variable.ast(), expression.ast())
+  Assign(variable, op, expression) {
+    return new core.Assignment(
+      variable.ast(),
+      op.sourceString,
+      expression.ast()
+    )
   },
 
   ForLoop(
@@ -101,21 +105,32 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   // IfStmt_long(_if, test, consequent, _else, alternate) {
   //   return new core.IfStatement(test.ast(), consequent.ast(), alternate.ast())
   // },
-  Statement_ifLong(
-    _if,
-    test,
-    consequent,
-    _elif,
-    _test2,
-    _conseq2,
-    _else,
-    _conseq3
-  ) {
-    return new core.LongIfStatement(test.ast(), consequent.ast())
+
+  Statement_ifStmt(_if, test, consequent, Elif, Else) {
+    console.log(Elif)
+    return new core.IfStatement(
+      test.ast(),
+      consequent.ast(),
+      Elif.children.map((x) => x.ast()),
+      Else.ast()
+    )
   },
-  Statement_ifShort(_if, test, consequent) {
-    return new core.ShortIfStatement(test.ast(), consequent.ast())
+
+  Elif(_elif, test, consequent) {
+    return new core.IfStatement(
+      test.ast(),
+      consequent.ast(),
+      undefined,
+      undefined
+    )
   },
+
+  Else(_else, body) {
+    return new core.IfStatement(true, body.ast(), undefined, undefined)
+  },
+  // Statement_ifShort(_if, test, consequent) {
+  //   return new core.ShortIfStatement(test.ast(), consequent.ast())
+  // },
   Statement_while(_while, test, body) {
     return new core.WhileStatement(test.ast(), body.ast())
   },
@@ -190,9 +205,10 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   Exp4_binary(left, op, right) {
     return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
   },
-  // Exp7_multiply(left, op, right) {
-  //   return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
-  // },
+
+  Exp7_binary(left, op, right) {
+    return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
+  },
   // Exp8_power(left, op, right) {
   //   return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
   // },

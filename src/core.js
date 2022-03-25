@@ -133,8 +133,8 @@ export class Decrement {
 
 export class Assignment {
   // Example: a[z].p = 50 * 22 ** 3 - x
-  constructor(target, source) {
-    Object.assign(this, { target, source })
+  constructor(target, op, source) {
+    Object.assign(this, { target, op, source })
   }
 }
 
@@ -153,19 +153,19 @@ export class ShortReturnStatement {
   // Intentionally empty
 }
 
-export class LongIfStatement {
+export class IfStatement {
   // Example: if x < 3 { print(100); } else { break; }
-  constructor(test, consequent, alternate) {
-    Object.assign(this, { test, consequent, alternate })
+  constructor(test, consequent, alternates, Else) {
+    Object.assign(this, { test, consequent, alternates, Else })
   }
 }
 
-export class ShortIfStatement {
-  // Example: if x < 3 { print(100); }
-  constructor(test, consequent) {
-    Object.assign(this, { test, consequent })
-  }
-}
+// export class ShortIfStatement {
+//   // Example: if x < 3 { print(100); }
+//   constructor(test, consequent) {
+//     Object.assign(this, { test, consequent })
+//   }
+// }
 
 export class WhileStatement {
   // Example: while level != 90 { level += random(-3, 8); }

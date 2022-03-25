@@ -7,17 +7,16 @@ PokerScript {
               | print Exp                                     -- print
               | return Exp							          -- return
               | contemplating Exp Block                        -- while
-              | excuses Exp Block                               --ifShort
-              | excuses Exp Block
-                (followingExcuses Exp Block)* 
-                (noMoreExcuses Block)?                          -- ifLong
+              | excuses Exp Block Elif* Else?                   --ifStmt
               | ForLoop
               | Exp
              
 
     ForLoop = playingLoose "(" chip Assign "," Exp "," Bump ")" Block
     Bump = Exp8 ("+$" | "-$") 
-    Assign =   id ":" Exp     
+    Elif = followingExcuses Exp Block
+    Else = noMoreExcuses Block
+    Assign =   id (":" | "incrementBy" | "decrementBy") Exp     
 	Block     = "$." Statement* ".$"
     Call      = id "(" Args ")"
 	Params    = ListOf<id, ",">
@@ -28,7 +27,6 @@ PokerScript {
 	          | playingOnTilt 
               | change 
               | stringBet                                        
-
 
  	Exp       = ("-" | "!") Exp8                               -- unary
               | Exp1 "?" Exp1 ":" Exp                            -- ternary
