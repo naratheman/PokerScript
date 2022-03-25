@@ -19,7 +19,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     )
   },
 
-  Statement_print(argument, _colon) {
+  Statement_print(_reveal, argument) {
     return new core.PrintStatement(argument.ast())
   },
 
@@ -60,8 +60,9 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   // Field(id, _colon, type) {
   //   return new core.Field(id.ast(), type.ast())
   // },
-  Statement_fundec(_straddle, id, _open, params, _close, block) {
+  Statement_fundec(_straddle, type, id, _open, params, _close, block) {
     return new core.FunctionDeclaration(
+      type.sourceString,
       id.ast(),
       params.asIteration().ast(),
       block.ast()
@@ -134,8 +135,8 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   Statement_while(_while, test, body) {
     return new core.WhileStatement(test.ast(), body.ast())
   },
-  Bump(_op, operand) {
-    return new core.Increment(operand.ast())
+  Bump(op, operand) {
+    return new core.Bump(operand.ast(), op.sourceString)
   },
   // LoopStmt_repeat(_repeat, count, body) {
   //   return new core.RepeatStatement(count.ast(), body.ast())
@@ -209,9 +210,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   Exp7_binary(left, op, right) {
     return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
   },
-  // Exp8_power(left, op, right) {
-  //   return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
-  // },
+
   // Exp8_unary(op, operand) {
   //   return new core.UnaryExpression(op.sourceString, operand.ast())
   // },

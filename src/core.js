@@ -64,8 +64,8 @@ export class Field {
 
 export class FunctionDeclaration {
   // Example: function f(x: [int?], y: string): Vector {}
-  constructor(fun, parameters, returnType, body) {
-    Object.assign(this, { fun, parameters, returnType, body })
+  constructor(returnType, fun, parameters, body) {
+    Object.assign(this, { returnType, fun, parameters, body })
   }
 }
 
@@ -117,17 +117,9 @@ export class OptionalType extends Type {
   }
 }
 
-export class Increment {
-  // Example: count++
-  constructor(variable) {
-    this.variable = variable
-  }
-}
-
-export class Decrement {
-  // Example: count--
-  constructor(variable) {
-    this.variable = variable
+export class Bump {
+  constructor(operand, op) {
+    Object.assign(this, { operand, op })
   }
 }
 

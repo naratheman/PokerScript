@@ -1,7 +1,7 @@
 PokerScript {
 	Program   =  Statement+
 	Statement = const? Type id ":" Exp                        -- vardec
-              | straddle id "(" Params ")" Block              -- fundec
+              | straddle Type id "(" Params ")" Block              -- fundec
               | Assign                                   -- assign
               | Bump                           -- bump
               | print Exp                                     -- print
@@ -51,10 +51,9 @@ PokerScript {
             | Call
             | id
             | "(" Exp ")"                                     -- parens
-            | "\"" char* "\""								  --character
             | "[]" "(" Type ")"                               --emptyarray
             | "[" NonemptyListOf<Exp, ","> "]"                --arrayexp
-            | stringlit 
+            | stringlit                                        
             
   stringlit   = "\"" char* "\""                               
   char        = ~control ~"\\" ~"\"" any
