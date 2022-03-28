@@ -138,6 +138,9 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   Bump(op, operand) {
     return new core.Bump(operand.ast(), op.sourceString)
   },
+  Call(id, _open, args, _close) {
+    return new core.Call(id.sourceString, args.ast())
+  },
   // LoopStmt_repeat(_repeat, count, body) {
   //   return new core.RepeatStatement(count.ast(), body.ast())
   // },
