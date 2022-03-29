@@ -160,17 +160,18 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   //   // No need for a block node, just return the list of statements
   //   return body.ast()
   // },
-  // Exp_unary(op, operand) {
-  //   return new core.UnaryExpression(op.sourceString, operand.ast())
-  // },
-  // Exp1_or(left, _ops, right) {
-  //   const operands = [left.ast(), ...right.ast()]
-  //   return operands.reduce((x, y) => new core.BinaryExpression("||", x, y))
-  // },
-  // Exp2_and(left, _ops, right) {
-  //   const operands = [left.ast(), ...right.ast()]
-  //   return operands.reduce((x, y) => new core.BinaryExpression("&&", x, y))
-  // },
+  Exp_unary(op, operand) {
+    return new core.UnaryExpression(op.sourceString, operand.ast())
+  },
+  Exp_ternary(test, _qmark, consequent, _colon, alternate) {
+    return new core.Conditional(test.ast(), consequent.ast(), alternate.ast())
+  },
+  Exp1_binary(left, op, right) {
+    return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
+  },
+  Exp2_binary(left, op, right) {
+    return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
+  },
   // Exp_conditional(test, _questionMark, consequent, _colon, alternate) {
   //   return new core.Conditional(test.ast(), consequent.ast(), alternate.ast())
   // },
@@ -210,9 +211,17 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
   },
 
-  Exp7_binary(left, op, right) {
+  Exp5_binary(left, op, right) {
     return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
   },
+
+  Exp6_binary(left, op, right) {
+    return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
+  },
+
+  // Exp7_binary(left, op, right) {
+  //   return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
+  // },
 
   // Exp8_unary(op, operand) {
   //   return new core.UnaryExpression(op.sourceString, operand.ast())
