@@ -219,6 +219,10 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
   },
 
+  Exp7_parens(_leftparens, exp, _rightparens) {
+    return exp.ast()
+  },
+
   // Exp7_binary(left, op, right) {
   //   return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
   // },
