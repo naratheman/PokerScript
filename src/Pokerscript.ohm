@@ -46,9 +46,9 @@ PokerScript {
     Exp7      =  num
             | hit
             | miss
+            | Call
             | "(" Exp ")"                                     -- parens
             | id
-            | Call
             | "[]" "(" Type ")"                               --emptyarray
             | "[" NonemptyListOf<Exp, ","> "]"                --arrayexp
             | stringlit                                        
