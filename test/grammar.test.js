@@ -23,9 +23,30 @@ const syntaxChecks = [
   ["arithmetic modulus", "chip modulus : 9 % 10"],
   [
     "if else function",
-    "excuses x == 0 $. cashout hit .$ followingExcuses hit $. cashout miss.$ ",
+    `excuses x == 0 $. cashout hit .$ followingExcuses hit $. cashout miss.$ noMoreExcuses $. reveal "what".$`,
   ],
-  ["Test ternary function", "excuses total == 21 ? cashout hit : cashout miss"],
+  [
+    "ternary function",
+    `total == 21 ? $.reveal "Stand".$ : $.hitOrBust(total).$`,
+  ],
+  ["reassignment", "x: pog"],
+  ["for loop", "playingLoose (chip y: 0, y < 20, y+$) $.y incrementBy 5.$"],
+  [
+    "function declaration",
+    "straddle playingOnTilt nice(num) $.cashout num == 69.$",
+  ],
+  [
+    "while loop",
+    `contemplating patience != 0  $.
+  reveal "What is taking so long!?"
+  patience -$
+.$`,
+  ],
+  ["unary negation", `excuses !negative $.reveal "Is this positive?".$`],
+  ["binary and/or", "reveal burger && fries || tendies"],
+  ["parentheses on expressions", "(-2)**2"],
+  ["+= operator", "x incrementBy 8"],
+  ["-= operator", "unlucky decrementBy allIn"],
   // ["complex var assignment", "c(5)[2] = 100;c.p.r=1;c.q(8)[2](1,1).z=1;"],
   // ["complex var bumps", "c(5)[2]++;c.p.r++;c.q(8)[2](1,1).z--;"],
   // ["call in statement", "let x = 1;\nf(100);\nprint(1);"],
@@ -71,7 +92,8 @@ const syntaxChecks = [
 
 // Programs with syntax errors that the parser will detect
 const syntaxErrors = [
-  // ["non-letter in an identifier", "let ab😭c = 2;", /Line 1, col 7:/],
+  ["non-letter in an identifier", "chip ab😭c: 2;", /Line 1, col 8:/],
+  ["illegal expression", "chip x: -2**2"],
   // ["malformed number", "let x= 2.;", /Line 1, col 10:/],
   // ["a float with an E but no exponent", "let x = 5E * 11;", /Line 1, col 10:/],
   // ["a missing right operand", "print(5 -);", /Line 1, col 10:/],
