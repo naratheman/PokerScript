@@ -13,7 +13,7 @@ PokerScript {
              
 
     ForLoop = playingLoose "(" chip Assign "," Exp "," Bump ")" Block
-    Bump = Exp ("+$" | "-$") 
+    Bump = Exp7 ("+$" | "-$") 
     Elif = followingExcuses Exp Block
     Else = noMoreExcuses Block
     Assign =   id (":" | "incrementBy" | "decrementBy") Exp     
@@ -28,7 +28,7 @@ PokerScript {
               | change 
               | stringBet                                        
 
- 	Exp       = ("-" | "!") Exp7                               -- unary
+ 	Exp       = ("-" | "!") Exp                               -- unary
               | Exp1 "?" Block ":" Block                            -- ternary
               | Exp1
 	Exp1      = Exp1 "||" Exp2                                 -- binary

@@ -93,7 +93,7 @@ const syntaxChecks = [
 // Programs with syntax errors that the parser will detect
 const syntaxErrors = [
   ["non-letter in an identifier", "chip ab😭c: 2;", /Line 1, col 8:/],
-  ["illegal expression", "chip x: -2**2"],
+  ["illegal expression", "chip x: -2**2", /Line 1, col 9:/],
   // ["malformed number", "let x= 2.;", /Line 1, col 10:/],
   // ["a float with an E but no exponent", "let x = 5E * 11;", /Line 1, col 10:/],
   // ["a missing right operand", "print(5 -);", /Line 1, col 10:/],
