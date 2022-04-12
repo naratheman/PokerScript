@@ -342,11 +342,7 @@ class Context {
     if (t.baseType instanceof Token) t.baseType = t.baseType.value
   }
   // check bump implementation?
-  Increment(s) {
-    this.analyze(s.variable)
-    checkInteger(s.variable)
-  }
-  Decrement(s) {
+  Bump(s) {
     this.analyze(s.variable)
     checkInteger(s.variable)
   }
