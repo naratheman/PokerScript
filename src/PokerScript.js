@@ -13,8 +13,8 @@ import fs from "fs/promises"
 import process from "process"
 import compile from "./compiler.js"
 
-const help = `Carlos compiler
-Syntax: carlos <filename> <outputType>
+const help = `PokerScript compiler
+Syntax: node src/PokerScript.js <filename> <outputType>
 Prints to stdout according to <outputType>, which must be one of:
   ast        the abstract syntax tree
   analyzed   the semantically analyzed representation

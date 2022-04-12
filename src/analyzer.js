@@ -1,3 +1,4 @@
+// Taken from Carlos 4/12/22
 // SEMANTIC ANALYZER
 //
 // Decorates the AST with semantic information and checks the semantic
