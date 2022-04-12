@@ -166,12 +166,12 @@ export class WhileStatement {
   }
 }
 
-export class RepeatStatement {
-  // Example: repeat 10 { print("Hello"); }
-  constructor(count, body) {
-    Object.assign(this, { count, body })
-  }
-}
+// export class RepeatStatement {
+//   // Example: repeat 10 { print("Hello"); }
+//   constructor(count, body) {
+//     Object.assign(this, { count, body })
+//   }
+// }
 
 export class Conditional {
   // Example: latitude >= 0 ? "North" : "South"
