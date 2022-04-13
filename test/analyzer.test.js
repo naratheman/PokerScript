@@ -5,7 +5,7 @@ import * as core from "../src/core.js"
 
 // Programs that are semantically correct
 const semanticChecks = [
-  ["variable declarations", 'const x = 1; let y = "false";'],
+  ["variable declarations", 'const chip x: 1; stringBet y: "false"'],
   ["complex array types", "function f(x: [[[int?]]?]) {}"],
   ["increment and decrement", "let x = 10; x--; x++;"],
   ["initialize with empty array", "let a = [](of int);"],

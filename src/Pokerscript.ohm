@@ -19,7 +19,7 @@ PokerScript {
     Assign =   id (":" | "incrementBy" | "decrementBy") Exp     
 	Block     = "$." Statement* ".$"
     Call      = id "(" Args ")"
-	Params    = ListOf<id, ",">
+	Params    = ListOf<Assign, ",">
 	Args      = ListOf<Exp, ","> 
     Type      = Type "?"                                      --optional
               | flop Type                                     --array

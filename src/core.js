@@ -43,6 +43,11 @@ export class TypeDeclaration {
 
 export class Type {
   // Type of all basic type int, float, string, etc. and superclass of others
+  static FLOAT = new Type("float")
+  static BOOLEAN = new Type("boolean")
+  static INT = new Type("int")
+  static STRING = new Type("string")
+  static VOID = new Type("void")
   constructor(description) {
     Object.assign(this, { description })
   }
@@ -97,17 +102,17 @@ export class ArrayType extends Type {
   }
 }
 
-export class FunctionType extends Type {
-  // Example: (boolean,[string]?)->float
-  constructor(paramTypes, returnType) {
-    super(
-      `(${paramTypes.map((t) => t.description).join(",")})->${
-        returnType.description
-      }`
-    )
-    Object.assign(this, { paramTypes, returnType })
-  }
-}
+// export class FunctionType extends Type {
+//   // Example: (boolean,[string]?)->float
+//   constructor(paramTypes, returnType) {
+//     super(
+//       `(${paramTypes.map((t) => t.description).join(",")})->${
+//         returnType.description
+//       }`
+//     )
+//     Object.assign(this, { paramTypes, returnType })
+//   }
+// }
 
 export class OptionalType extends Type {
   // Example: string?

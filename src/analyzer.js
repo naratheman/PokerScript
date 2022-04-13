@@ -28,7 +28,6 @@
 import {
   Variable,
   Type,
-  FunctionType,
   ArrayType,
   StructType,
   OptionalType,
@@ -71,25 +70,25 @@ Object.assign(ArrayType.prototype, {
   },
 })
 
-Object.assign(FunctionType.prototype, {
-  isEquivalentTo(target) {
-    return (
-      target.constructor === FunctionType &&
-      this.returnType.isEquivalentTo(target.returnType) &&
-      this.paramTypes.length === target.paramTypes.length &&
-      this.paramTypes.every((t, i) => target.paramTypes[i].isEquivalentTo(t))
-    )
-  },
-  isAssignableTo(target) {
-    // Functions are covariant on return types, contravariant on parameters.
-    return (
-      target.constructor === FunctionType &&
-      this.returnType.isAssignableTo(target.returnType) &&
-      this.paramTypes.length === target.paramTypes.length &&
-      this.paramTypes.every((t, i) => target.paramTypes[i].isAssignableTo(t))
-    )
-  },
-})
+// Object.assign(FunctionType.prototype, {
+//   isEquivalentTo(target) {
+//     return (
+//       target.constructor === FunctionType &&
+//       this.returnType.isEquivalentTo(target.returnType) &&
+//       this.paramTypes.length === target.paramTypes.length &&
+//       this.paramTypes.every((t, i) => target.paramTypes[i].isEquivalentTo(t))
+//     )
+//   },
+//   isAssignableTo(target) {
+//     // Functions are covariant on return types, contravariant on parameters.
+//     return (
+//       target.constructor === FunctionType &&
+//       this.returnType.isAssignableTo(target.returnType) &&
+//       this.paramTypes.length === target.paramTypes.length &&
+//       this.paramTypes.every((t, i) => target.paramTypes[i].isAssignableTo(t))
+//     )
+//   },
+// })
 
 Object.assign(OptionalType.prototype, {
   isEquivalentTo(target) {
@@ -272,6 +271,7 @@ class Context {
     return new Context({ ...this, parent: this, locals: new Map(), ...props })
   }
   analyze(node) {
+    console.log("Node:", node.constructor)
     return this[node.constructor.name](node)
   }
   Program(p) {
@@ -343,14 +343,17 @@ class Context {
   }
   // check bump implementation?
   Bump(s) {
-    this.analyze(s.variable)
-    checkInteger(s.variable)
+    this.analyze(s.operand)
+    checkInteger(s.operand)
   }
   Assignment(s) {
     this.analyze(s.source)
     this.analyze(s.target)
     checkAssignable(s.source, { toType: s.target.type })
     checkNotReadOnly(s.target)
+  }
+  PrintStatement(s) {
+    this.analyze(s.argument)
   }
   BreakStatement(s) {
     checkInLoop(this)
