@@ -341,10 +341,9 @@ class Context {
     this.analyze(t.baseType)
     if (t.baseType instanceof Token) t.baseType = t.baseType.value
   }
-  // check bump implementation?
   Bump(s) {
-    this.analyze(s.variable)
-    checkInteger(s.variable)
+    this.analyze(s.operand)
+    checkInteger(s.operand)
   }
   Assignment(s) {
     this.analyze(s.source)
