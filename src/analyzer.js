@@ -277,11 +277,15 @@ class Context {
   Program(p) {
     this.analyze(p.statements)
   }
+  Inst(d) {
+    this.analyze(d.name)
+    d.type.description, d.name.lexeme
+  }
   VariableDeclaration(d) {
     this.analyze(d.initializer)
     d.variable.value = new Variable(
       d.variable.lexeme,
-      d.modifier.lexeme === "const"
+      d.modifier.lexeme === "constantPressure"
     )
     d.variable.value.type = d.initializer.type
     this.add(d.variable.lexeme, d.variable.value)

@@ -16,10 +16,11 @@ PokerScript {
     Bump = Exp7 ("+$" | "-$") 
     Elif = followingExcuses Exp Block
     Else = noMoreExcuses Block
-    Assign =   id (":" | "incrementBy" | "decrementBy") Exp     
+    Assign =   id (":" | "incrementBy" | "decrementBy") Exp
+    Inst = Type ":" id      
 	Block     = "$." Statement* ".$"
     Call      = id "(" Args ")"
-	Params    = ListOf<id, ",">
+	Params    = ListOf<Inst, ",">
 	Args      = ListOf<Exp, ","> 
     Type      = Type "?"                                      --optional
               | flop Type                                     --array

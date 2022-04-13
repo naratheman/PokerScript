@@ -51,6 +51,10 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     )
   },
 
+  Inst(type, _colon, id) {
+    return new core.Instantiation(type.sourceString, id.sourceString)
+  },
+
   // Statement_assign(variable, _eq, expression, _semicolon) {
   //   return new core.Assignment(variable.ast(), expression.ast())
   // },

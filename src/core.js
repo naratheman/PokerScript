@@ -74,6 +74,12 @@ export class FunctionDeclaration {
   }
 }
 
+export class Instantiation {
+  constructor(type, name) {
+    Object.assign(this, { type, name })
+  }
+}
+
 export class ForLoop {
   constructor(declaration, breakCondition, incDec, body) {
     Object.assign(this, { declaration, breakCondition, incDec, body })
