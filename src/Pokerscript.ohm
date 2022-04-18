@@ -50,6 +50,7 @@ PokerScript {
             | Call
             | "(" Exp ")"                                     -- parens
             | id
+            | Exp7 "[" Exp "]"                                --subscript
             | "[]" "(" Type ")"                               --emptyarray
             | "[" NonemptyListOf<Exp, ","> "]"                --arrayexp
             | stringlit                                        

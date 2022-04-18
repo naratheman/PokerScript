@@ -226,6 +226,13 @@ export class EmptyArray {
   }
 }
 
+export class Subscript {
+  constructor(array, request) {
+    this.array = array
+    this.request = request
+  }
+}
+
 // export class MemberExpression {
 //   // Example: state.population
 //   constructor(object, field) {

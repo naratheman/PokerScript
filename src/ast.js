@@ -231,6 +231,10 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     return new core.ArrayExpression(entries.asIteration().ast())
   },
 
+  Exp7_subscript(array, _left, index, _right) {
+    return new core.Subscript(array.ast(), index.ast())
+  },
+
   // Exp7_binary(left, op, right) {
   //   return new core.BinaryExpression(op.sourceString, left.ast(), right.ast())
   // },
