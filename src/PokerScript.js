@@ -1,12 +1,12 @@
 // console.log("Hello World")
 
-// export function add(x, y) {
-//   return x + y
-// }
+export function add(x, y) {
+  return x + y
+}
 
-// export function times(x, y) {
-//   return x * y
-// }
+export function times(x, y) {
+  return x * y
+}
 
 //from carlos again
 import fs from "fs/promises"

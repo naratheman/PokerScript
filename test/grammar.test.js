@@ -33,7 +33,7 @@ const syntaxChecks = [
   ["for loop", "playingLoose (chip y: 0, y < 20, y+$) $.y incrementBy 5.$"],
   [
     "function declaration",
-    "straddle playingOnTilt nice(num) $.cashout num == 69.$",
+    "straddle playingOnTilt nice(chip: num) $.cashout num == 69.$",
   ],
   [
     "while loop",
@@ -47,6 +47,7 @@ const syntaxChecks = [
   ["parentheses on expressions", "(-2)**2"],
   ["+= operator", "x incrementBy 8"],
   ["-= operator", "unlucky decrementBy allIn"],
+  ["array expression", "flop chip hand: [2, 7, 10, 7, 10]"],
   // ["complex var assignment", "c(5)[2] = 100;c.p.r=1;c.q(8)[2](1,1).z=1;"],
   // ["complex var bumps", "c(5)[2]++;c.p.r++;c.q(8)[2](1,1).z--;"],
   // ["call in statement", "let x = 1;\nf(100);\nprint(1);"],
