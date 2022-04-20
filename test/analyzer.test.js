@@ -5,8 +5,8 @@ import * as core from "../src/core.js"
 
 // Programs that are semantically correct
 const semanticChecks = [
-  ["variable declarations", 'const chip x: 1; stringBet y: "false"'],
-  ["optional array types", "chip? x:1"],
+  ["variable declarations", 'constantPressure chip x: 1; stringBet y: "false"'],
+  ["optional array types", "flop chip? x: [1]"],
   ["increment and decrement", "chip x : 10; x-$; x+$;"],
   ["declare arrays", "flop chip myarray :[69, 420, 666] "],
   ["assign to array element", "flop chip a : [1,2,3]; a[1]=100;"],
@@ -26,10 +26,10 @@ const semanticChecks = [
   ["&&", "reveal'true&&1<2&&false&&!true';"],
   // ["bit ops", "print((1&2)|(9^3));"],
   ["relations", "reveal'1<=2 && && 3.5<1.2';"],
-  ["ok to == arrays", "reveal'flop 1== flop 5,8';"],
+  ["ok to == arrays", "reveal'flop chip x: [1] == flop 5,8';"],
   ["ok to != arrays", "reveal' flop 1!= flop 5,8';"],
   // ["shifts", "print(1<<3<<5<<8>>2>>0);"],
-  ["arithmetic", "chip x=1;reveal'2*3+5**-3/2-5%8';"],
+  ["arithmetic", "chip x: 1;reveal'2*3+5**-3/2-5%8';"],
   // ["array length", "reveal'[1,2,3]';"],
   ["optional types", "chip? x : 2 ;"],
   ["variables", "chip x=10; reveal'hai';"],
