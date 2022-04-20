@@ -227,9 +227,9 @@ export class EmptyArray {
 }
 
 export class Subscript {
-  constructor(array, request) {
+  constructor(array, index) {
     this.array = array
-    this.request = request
+    this.index = index
   }
 }
 

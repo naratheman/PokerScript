@@ -13,8 +13,8 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   Statement_vardec(modifier, type, id, _colon, initializer) {
     return new core.VariableDeclaration(
       modifier.ast(),
-      type.sourceString,
-      id.sourceString,
+      type.ast(),
+      id.ast(),
       initializer.ast()
     )
   },
@@ -66,7 +66,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   // },
   Statement_fundec(_straddle, type, id, _open, params, _close, block) {
     return new core.FunctionDeclaration(
-      type.sourceString,
+      type.ast(),
       id.ast(),
       params.asIteration().ast(),
       block.ast()
@@ -272,10 +272,10 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   // false(_) {
   //   return new core.Token("Bool", this.source)
   // },
-  // intlit(_digits) {
-  //   return new core.Token("Int", this.source)
-  // },
-  num(_whole, _point, _fraction, _e, _sign, _exponent) {
+  intLit(_digits) {
+    return new core.Token("Int", this.source)
+  },
+  floatLit(_whole, _point, _fraction, _e, _sign, _exponent) {
     return new core.Token("Float", this.source)
   },
   stringlit(_openQuote, chars, _closeQuote) {

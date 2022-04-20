@@ -133,6 +133,7 @@ function checkInteger(e) {
 }
 
 function checkIsAType(e) {
+  console.log("EEEEEEEEEE", e)
   check(e instanceof Type, "Type expected", e)
 }
 
@@ -271,7 +272,6 @@ class Context {
     return new Context({ ...this, parent: this, locals: new Map(), ...props })
   }
   analyze(node) {
-    console.log("Node:", node.constructor)
     return this[node.constructor.name](node)
   }
   Program(p) {
@@ -454,16 +454,13 @@ class Context {
     } else if (e.op.lexeme === "-") {
       checkNumeric(e.operand)
       e.type = e.operand.type
-    } else {
-      // Operator is "some"
-      e.type = new OptionalType(e.operand.type?.value ?? e.operand.type)
     }
   }
   EmptyOptional(e) {
     this.analyze(e.baseType)
     e.type = new OptionalType(e.baseType?.value ?? e.baseType)
   }
-  SubscriptExpression(e) {
+  Subscript(e) {
     this.analyze(e.array)
     e.type = e.array.type.baseType
     this.analyze(e.index)
