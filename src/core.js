@@ -266,6 +266,7 @@ export class Token {
 // Throw an error message that takes advantage of Ohm's messaging
 export function error(message, token) {
   if (token) {
+    console.log(token, token.source)
     throw new Error(`${token.source.getLineAndColumnMessage()}${message}`)
   }
   throw new Error(message)

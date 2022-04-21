@@ -4,6 +4,7 @@ PokerScript {
               | straddle Type id "(" Params ")" Block              -- fundec
               | Assign                                   -- assign
               | Bump                           -- bump
+              | fold                                          -- break
               | print Exp                                     -- print
               | return Exp							          -- return
               | contemplating Exp Block                        -- while
@@ -68,6 +69,7 @@ PokerScript {
 	
     const = "constantPressure" ~idchar
 	rude = "rude" ~idchar
+    fold = "fold" ~idchar
 	excuses = "excuses" ~idchar
     followingExcuses = "followingExcuses" ~idchar
     noMoreExcuses = "noMoreExcuses" ~idchar

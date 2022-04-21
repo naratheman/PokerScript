@@ -98,9 +98,9 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   // Statement_call(call, _semicolon) {
   //   return call.ast()
   // },
-  // Statement_break(_break, _semicolon) {
-  //   return new core.BreakStatement()
-  // },
+  Statement_break(_fold) {
+    return new core.BreakStatement()
+  },
   Statement_return(_return, expression) {
     return new core.ReturnStatement(expression.ast())
   },
@@ -112,7 +112,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   // },
 
   Statement_ifStmt(_if, test, consequent, Elif, Else) {
-    console.log(Elif)
+    //console.log(Elif)
     return new core.IfStatement(
       test.ast(),
       consequent.ast(),
@@ -145,7 +145,12 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   Call(id, _open, args, _close) {
     return new core.Call(id.sourceString, args.asIteration().ast())
   },
-
+  Type_optional(type, _qmark) {
+    return new core.OptionalType(type.ast())
+  },
+  Type_array(_flop, type) {
+    return new core.ArrayType(type.ast())
+  },
   // LoopStmt_repeat(_repeat, count, body) {
   //   return new core.RepeatStatement(count.ast(), body.ast())
   // },
@@ -282,6 +287,9 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   stringlit(_openQuote, chars, _closeQuote) {
     return new core.Token("Str", this.source)
   },
+  // Type(_type) {
+  //   return new core.Token("Type", this.source)
+  // },
   _terminal() {
     return new core.Token("Sym", this.source)
   },

@@ -299,12 +299,14 @@ class Context {
     checkIsAType(f.type)
   }
   FunctionDeclaration(d) {
+    console.log("D", d)
     if (d.returnType) this.analyze(d.returnType)
     d.fun.value = new Function(
       d.fun.lexeme,
       d.parameters,
       d.returnType?.value ?? d.returnType ?? Type.VOID
     )
+    console.log("VALUE ", d.returnType?.value)
     checkIsAType(d.fun.value.returnType)
     // When entering a function body, we must reset the inLoop setting,
     // because it is possible to declare a function inside a loop!
@@ -331,12 +333,12 @@ class Context {
     this.analyze(t.baseType)
     if (t.baseType instanceof Token) t.baseType = t.baseType.value
   }
-  FunctionType(t) {
-    this.analyze(t.paramTypes)
-    t.paramTypes = t.paramTypes.map((p) => (p instanceof Token ? p.value : p))
-    this.analyze(t.returnType)
-    if (t.returnType instanceof Token) t.returnType = t.returnType.value
-  }
+  // FunctionType(t) {
+  //   this.analyze(t.paramTypes)
+  //   t.paramTypes = t.paramTypes.map((p) => (p instanceof Token ? p.value : p))
+  //   this.analyze(t.returnType)
+  //   if (t.returnType instanceof Token) t.returnType = t.returnType.value
+  // }
   OptionalType(t) {
     this.analyze(t.baseType)
     if (t.baseType instanceof Token) t.baseType = t.baseType.value
@@ -506,6 +508,7 @@ class Context {
     if (t.category === "Str") [t.value, t.type] = [t.lexeme, Type.STRING]
     if (t.category === "Bool")
       [t.value, t.type] = [t.lexeme === "true", Type.BOOLEAN]
+    //if (t.category === "Type") t.value = t.lexeme
   }
   Array(a) {
     a.forEach((item) => this.analyze(item))
