@@ -50,6 +50,7 @@ const syntaxChecks = [
   ["array instantiation", "flop chip hand: [2, 7, 10, 7, 10]"],
   ["subscripts", "stringBet lost: curseWords[2]"],
   ["array expression", '[1, 3, "5", odd]'],
+  ["optinal type instantiation", 'stringBet? isItThere: "It is this time"'],
   // ["complex var assignment", "c(5)[2] = 100;c.p.r=1;c.q(8)[2](1,1).z=1;"],
   // ["complex var bumps", "c(5)[2]++;c.p.r++;c.q(8)[2](1,1).z--;"],
   // ["call in statement", "let x = 1;\nf(100);\nprint(1);"],

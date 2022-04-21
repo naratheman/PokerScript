@@ -29,7 +29,6 @@ import {
   Variable,
   Type,
   ArrayType,
-  StructType,
   OptionalType,
   Function,
   Token,
@@ -158,12 +157,12 @@ function checkAllHaveSameType(expressions) {
   )
 }
 
-function checkNotRecursive(struct) {
-  check(
-    !struct.fields.map((f) => f.type).includes(struct),
-    "Struct type must not be recursive"
-  )
-}
+// function checkNotRecursive(struct) {
+//   check(
+//     !struct.fields.map((f) => f.type).includes(struct),
+//     "Struct type must not be recursive"
+//   )
+// }
 
 function checkAssignable(e, { toType: type }) {
   check(
@@ -508,7 +507,7 @@ class Context {
     if (t.category === "Str") [t.value, t.type] = [t.lexeme, Type.STRING]
     if (t.category === "Bool")
       [t.value, t.type] = [t.lexeme === "true", Type.BOOLEAN]
-    //if (t.category === "Type") t.value = t.lexeme
+    if (t.category === "Type") t.value = t.lexeme
   }
   Array(a) {
     a.forEach((item) => this.analyze(item))

@@ -43,23 +43,22 @@ export class TypeDeclaration {
 
 export class Type {
   // Type of all basic type int, float, string, etc. and superclass of others
-  static FLOAT = new Type("float")
-  static BOOLEAN = new Type("boolean")
-  static INT = new Type("int")
-  static STRING = new Type("string")
-  static VOID = new Type("void")
+  static FLOAT = new Type("change")
+  static BOOLEAN = new Type("playingOnTilt")
+  static INT = new Type("chip")
+  static STRING = new Type("stringBet")
   constructor(description) {
     Object.assign(this, { description })
   }
 }
 
-export class StructType extends Type {
-  // Generated when processing a type declaration
-  constructor(name, fields) {
-    super(name.lexeme)
-    Object.assign(this, { fields })
-  }
-}
+// export class StructType extends Type {
+//   // Generated when processing a type declaration
+//   constructor(name, fields) {
+//     super(name.lexeme)
+//     Object.assign(this, { fields })
+//   }
+// }
 
 export class Field {
   constructor(name, type) {
@@ -266,7 +265,7 @@ export class Token {
 // Throw an error message that takes advantage of Ohm's messaging
 export function error(message, token) {
   if (token) {
-    console.log(token, token.source)
+    console.log("TOKEN", token, "SOURCE", token.source)
     throw new Error(`${token.source.getLineAndColumnMessage()}${message}`)
   }
   throw new Error(message)
