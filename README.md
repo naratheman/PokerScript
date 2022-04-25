@@ -1,8 +1,8 @@
 # PokerScript
 
-<img src="docs/PokerScript_logo_spade.png" height="200"> Compiler for the language PokerScript
+<img src="docs/PokerScript_logo_spade.png" height="300">
 
-[PokerScript Home Page](https://naratheman.github.io/WebsitePokerScript/# "PokerScript Home Page")
+### [PokerScript Home Page](https://naratheman.github.io/WebsitePokerScript/# "PokerScript Home Page")
 
 ## Welcome to PokerScript
 
