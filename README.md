@@ -1,9 +1,8 @@
-<img src="docs/PokerScript_logo_spade.png" height="200">
 # PokerScript
 
-Compiler for the language PokerScript
+<img src="docs/PokerScript_logo_spade.png" height="300">
 
-[PokerScript Home Page](https://naratheman.github.io/WebsitePokerScript/# "PokerScript Home Page")
+### [PokerScript Home Page](https://naratheman.github.io/WebsitePokerScript/# "PokerScript Home Page")
 
 ## Welcome to PokerScript
 
@@ -212,6 +211,8 @@ this is a multiline comment
 
 ### **JavaScript** on the left; **PokerScript** on the right.
 
+Simple function to add two numbers
+
 <table>
 <tr> <th>JavaScript</th><th>PokerScript</th><tr>
 </tr>
@@ -236,6 +237,8 @@ straddle add(a, b) $.
 
 </td>
 </table>
+
+Arrays
 
 <table>
 <tr> <th>JavaScript</th><th>PokerScript</th><tr>
