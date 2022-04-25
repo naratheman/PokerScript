@@ -211,6 +211,8 @@ this is a multiline comment
 
 ### **JavaScript** on the left; **PokerScript** on the right.
 
+Simple function to add two numbers
+
 <table>
 <tr> <th>JavaScript</th><th>PokerScript</th><tr>
 </tr>
@@ -235,6 +237,8 @@ straddle add(a, b) $.
 
 </td>
 </table>
+
+Arrays
 
 <table>
 <tr> <th>JavaScript</th><th>PokerScript</th><tr>
