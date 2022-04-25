@@ -22,7 +22,6 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 - Static typing
 - Recursion
 - Tuples
-- List Comprehension
 - `.ps` file extension
 
 ## Types
@@ -34,8 +33,17 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 | float   | change        |
 | bool    | playingOnTilt |
 
+In poker, a "string bet" is when a player doesn't make their bet in a continuous motion and also doesn't declare the amount of their bet.
+
+A chip represents a dollar amount in poker. Chips can be as high as $100,000 in high stakes games.
+
+Change refers to dollar amounts less than $1 (e.g., 50¢ worth of change). Poker players typically don't concern themselves with such small amounts, but hey, you never know.
+
+Tilt is a poker term for a state of mental or emotional confusion or frustration in which a player adopts a less than optimal strategy, usually resulting in the player becoming overly aggressive. Trust us, you don't want to play on tilt.
+
 ## Built In Functions
 
+### Printing
 | JavaScript                      | PokerScript              |
 | ------------------------------- | ------------------------ |
 | console.log(“Place your bets”); | reveal “Place your bets” |
@@ -53,13 +61,13 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 
 ## Arithmetic
 
-- sum = 9 + 10
-- difference = 9 - 10
-- multiplication = 9 \* 10
-- integer division = 9 / 10
-- float division = 9 // 10
-- exponents (9^10) = bigspender(9, 10)
-- modulus = 9 % 10
+- Sum: `9 + 10`
+- Difference: `9 - 10`
+- Multiplication: `9 \* 10`
+- Integer Division: `9 / 10`
+- Float Division: `9 // 10`
+- Exponents (e.g. 9^10): `bigspender(9, 10)`
+- Modulus: `9 % 10`
 
 ## Keywords
 
@@ -93,22 +101,22 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 <td>
 
 ```javascript
-if x == 0{
+if (x == 0) {
   return true;
-  } else {
+  
+} else {
   return false;
-  }
+}
 ```
 
 </td>
-
 <td>
 
 ```
 excuses x == 0 $.
   cashout hit
-.$
-noMoreExcuses $.
+  
+.$ noMoreExcuses $.
   cashout miss
 .$
 ```
@@ -125,11 +133,11 @@ noMoreExcuses $.
 <td>
 
 ```javascript
-let patience = 3
-do {
-  print("what is taking so long!?")
-  patience--
-} while (patience != 0)
+let patience = 3;
+while (patience != 0) {
+  console.log("What is taking so long!?");
+  patience--;
+}
 ```
 
 </td>
@@ -138,10 +146,10 @@ do {
 
 ```
 chip patience: 3
-action $.
-  reveal("What is taking so long!?")
-  patience decrement
-.$ contemplating(patience != 0)
+contemplating patience != 0  $.
+  reveal "What is taking so long!?"
+  patience -$
+.$
 ```
 
 </td>
@@ -174,7 +182,7 @@ for (int x = 0; x < 10; x++) {
 chip winnings: 0
 playingLoose (chip x: 0, x < 10, x+$) $.
   playingLoose (chip y: 0, y < 20, y+$) $.
-    winnings incrementby 5
+    winnings +$ 5
   .$
 .$
 ```
@@ -218,7 +226,7 @@ function add(a, b) {
 <td>
 
 ```
-straddle add (a, b) $.
+straddle add(a, b) $.
   cashout a + b
 .$
 ```
@@ -233,7 +241,7 @@ straddle add (a, b) $.
 <td>
 
 ```javascript
-let myarray = [2, 4, 6]
+let arr = [2, 4, 6]
 ```
 
 </td>
@@ -241,7 +249,7 @@ let myarray = [2, 4, 6]
 <td>
 
 ```
-flop chip myarray: [2, 4, 6]
+flop chip arr: [2, 4, 6]
 ```
 
 </td>
