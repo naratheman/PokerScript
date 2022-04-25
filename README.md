@@ -22,7 +22,6 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 - Static typing
 - Recursion
 - Tuples
-- List Comprehension
 - `.ps` file extension
 
 ## Types
@@ -53,13 +52,13 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 
 ## Arithmetic
 
-- sum = 9 + 10
-- difference = 9 - 10
-- multiplication = 9 \* 10
-- integer division = 9 / 10
-- float division = 9 // 10
-- exponents (9^10) = bigspender(9, 10)
-- modulus = 9 % 10
+- Sum: 9 + 10
+- Difference: 9 - 10
+- Multiplication: 9 \* 10
+- Integer Division: 9 / 10
+- Float Division: 9 // 10
+- Exponents (e.g. 9^10): bigspender(9, 10)
+- Modulus: 9 % 10
 
 ## Keywords
 
@@ -93,15 +92,14 @@ PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evansci
 <td>
 
 ```javascript
-if x == 0{
+if (x == 0) {
   return true;
-  } else {
+} else {
   return false;
-  }
+}
 ```
 
 </td>
-
 <td>
 
 ```
@@ -125,11 +123,11 @@ noMoreExcuses $.
 <td>
 
 ```javascript
-let patience = 3
-do {
-  print("what is taking so long!?")
-  patience--
-} while (patience != 0)
+let patience = 3;
+while (patience != 0) {
+  console.log("What is taking so long!?");
+  patience--;
+}
 ```
 
 </td>
