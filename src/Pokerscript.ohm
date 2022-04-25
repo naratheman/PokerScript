@@ -7,7 +7,7 @@ PokerScript {
                         | Bump                                          -- bump
                         | fold                                          -- break
                         | print Exp                                     -- print
-                        | return Exp							        -- return
+                        | return Exp1                                   -- return
                         | contemplating Exp Block                       -- while
                         | excuses Exp Block Elif* Else?                 -- ifStmt
                         | ForLoop
@@ -81,7 +81,7 @@ PokerScript {
     action              = "action" ~idchar
     hit                 = "hit" ~idchar
     miss                = "miss" ~idchar
-    chip 	            = "chip" ~idchar
+    chip                = "chip" ~idchar
     flop                = "flop" ~idchar
     playingOnTilt       = "playingOnTilt" ~idchar
     change              = "change" ~idchar
