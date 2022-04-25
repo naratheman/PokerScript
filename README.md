@@ -1,4 +1,5 @@
 ![logo](docs/PSlogo.png)
+<img src="docs/PSlogo.png" height="100">
 
 [PokerScript Home Page](https://naratheman.github.io/WebsitePokerScript/# "PokerScript Home Page")
 
