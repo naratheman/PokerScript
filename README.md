@@ -1,4 +1,3 @@
-<img src="docs/PokerScript_logo_spade.png" height="200">
 # PokerScript
 
 Compiler for the language PokerScript
