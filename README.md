@@ -1,10 +1,9 @@
-![logo](docs/PSlogo.png)
-
-[PokerScript Home Page](https://naratheman.github.io/WebsitePokerScript/# "PokerScript Home Page")
-
+<img src="docs/PokerScript_logo_spade.png" height="200">
 # PokerScript
 
 Compiler for the language PokerScript
+
+[PokerScript Home Page](https://naratheman.github.io/WebsitePokerScript/# "PokerScript Home Page")
 
 ## Welcome to PokerScript
 
@@ -16,6 +15,10 @@ lingo that surrounds the game of poker, including both official and informal ter
 
 PokerScript is brought to you by [Evan Sciancalepore](https://github.com/evanscianc "Evan's Github"),
 [Naradahana Utoro Dewo](https://github.com/naratheman "Nara's Github"), [Marvin Pramana](https://github.com/mpramana "Marvin's Github"), [Garrett Marzo](https://github.com/gmarzo "Garrett's Github") and [Warren Binder](https://github.com/wbinder1 "Warren's Github").
+
+## The Team
+
+<img src="docs/PSlogo.png" height="500">
 
 ## Features
 
