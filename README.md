@@ -61,13 +61,13 @@ Tilt is a poker term for a state of mental or emotional confusion or frustration
 
 ## Arithmetic
 
-- Sum: 9 + 10
-- Difference: 9 - 10
-- Multiplication: 9 \* 10
-- Integer Division: 9 / 10
-- Float Division: 9 // 10
-- Exponents (e.g. 9^10): bigspender(9, 10)
-- Modulus: 9 % 10
+- Sum: `9 + 10`
+- Difference: `9 - 10`
+- Multiplication: `9 \* 10`
+- Integer Division: `9 / 10`
+- Float Division: `9 // 10`
+- Exponents (e.g. 9^10): `bigspender(9, 10)`
+- Modulus: `9 % 10`
 
 ## Keywords
 
@@ -103,6 +103,7 @@ Tilt is a poker term for a state of mental or emotional confusion or frustration
 ```javascript
 if (x == 0) {
   return true;
+  
 } else {
   return false;
 }
@@ -114,8 +115,8 @@ if (x == 0) {
 ```
 excuses x == 0 $.
   cashout hit
-.$
-noMoreExcuses $.
+  
+.$ noMoreExcuses $.
   cashout miss
 .$
 ```
