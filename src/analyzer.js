@@ -132,7 +132,7 @@ function checkInteger(e) {
 }
 
 function checkIsAType(e) {
-  console.log("EEEEEEEEEE", e)
+  // console.log("EEEEEEEEEE", e)
   check(e instanceof Type, "Type expected", e)
 }
 
@@ -271,6 +271,7 @@ class Context {
     return new Context({ ...this, parent: this, locals: new Map(), ...props })
   }
   analyze(node) {
+    console.log(node.constructor.name)
     return this[node.constructor.name](node)
   }
   Program(p) {
@@ -298,14 +299,14 @@ class Context {
     checkIsAType(f.type)
   }
   FunctionDeclaration(d) {
-    console.log("D", d)
+    // console.log("D÷", d)
     if (d.returnType) this.analyze(d.returnType)
     d.fun.value = new Function(
       d.fun.lexeme,
       d.parameters,
       d.returnType?.value ?? d.returnType ?? Type.VOID
     )
-    console.log("VALUE ", d.returnType?.value)
+    // console.log("VALUE ", d.returnType?.value)
     checkIsAType(d.fun.value.returnType)
     // When entering a function body, we must reset the inLoop setting,
     // because it is possible to declare a function inside a loop!
@@ -331,6 +332,11 @@ class Context {
   ArrayType(t) {
     this.analyze(t.baseType)
     if (t.baseType instanceof Token) t.baseType = t.baseType.value
+  }
+  Instantiation(i) {
+    this.analyze(i.type)
+    this.analyze(i.name)
+    i.value = new InstantiationObj(i.type, i.name)
   }
   // FunctionType(t) {
   //   this.analyze(t.paramTypes)
@@ -507,7 +513,13 @@ class Context {
     if (t.category === "Str") [t.value, t.type] = [t.lexeme, Type.STRING]
     if (t.category === "Bool")
       [t.value, t.type] = [t.lexeme === "true", Type.BOOLEAN]
-    if (t.category === "Type") t.value = t.lexeme
+    if (t.category === "Sym") {
+      if (t.lexeme === "chip") t.value = Type.INT
+      if (t.lexeme === "stringBet") t.value = Type.STRING
+      if (t.lexeme === "change") t.value = Type.FLOAT
+      if (t.lexeme === "playingOnTilt") t.value = Type.BOOLEAN
+    }
+    //if (t.category === "Type") t.value = t.lexeme
   }
   Array(a) {
     a.forEach((item) => this.analyze(item))

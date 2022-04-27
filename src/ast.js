@@ -287,9 +287,9 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   stringlit(_openQuote, chars, _closeQuote) {
     return new core.Token("Str", this.source)
   },
-  Type(_type) {
-    return new core.Token("Type", this.source)
-  },
+  // Type(_type) {
+  //   return new core.Token("Type", this.source)
+  // },
   _terminal() {
     return new core.Token("Sym", this.source)
   },

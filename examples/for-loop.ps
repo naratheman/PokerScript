@@ -4,6 +4,6 @@ chip winnings: 0
 
 playingLoose (chip x: 0, x <= 10, x+$) $.
   playingLoose (chip y: 0, y < 20, y+$) $.
-    winnings +$ 5
+    winnings incrementBy 5
   .$
 .$

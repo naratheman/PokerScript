@@ -71,7 +71,10 @@ const semanticChecks = [
   //   "function f() {} let g = f; let h = [g, f]; print(h[0]());",
   // ],
   // ["struct parameters", "struct S {} function f(x: S) {}"],
-  ["array parameters", "straddle chip square(flop chip : x) $. cashout x**2.$"],
+  [
+    "array parameters",
+    "straddle chip square(flop chip : x) $. cashout x[0]**2.$",
+  ],
   ["optional parameters", "straddle chip num(chip?: x) $. cashout x.$"],
   // ["empty optional types", "print(no [int]); print(no string);"],
   // ["types in function type", "function f(g: (int?, float)->string) {}"],
