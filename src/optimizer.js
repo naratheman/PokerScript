@@ -43,6 +43,10 @@ const optimizers = {
     d.type = optimize(d.type)
     return d
   },
+  PrintStatement(p) {
+    p.argument = optimize(p.argument)
+    return p
+  },
   Field(f) {
     f.name = f.name.lexeme
     return f
