@@ -5,7 +5,7 @@ rude ternary/conditional expression, and, or
 playingOnTilt yes: hit
 playingOnTilt no: miss
 
-yes ? $.cashout hit.$ : $.cashout miss.$
+hit ? $.cashout hit.$ : $.cashout miss.$
 yes || no
 no && no
 

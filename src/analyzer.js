@@ -32,6 +32,7 @@ import {
   OptionalType,
   Function,
   Token,
+  InstantiationObj,
   error,
 } from "./core.js"
 import * as stdlib from "./stdlib.js"
