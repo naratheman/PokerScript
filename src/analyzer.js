@@ -404,6 +404,15 @@ class Context {
     checkBoolean(s.test)
     this.newChildContext({ inLoop: true }).analyze(s.body)
   }
+  ForLoop(f) {
+    this.analyze(f.assign)
+    checkNumeric(f.assign)
+    this.analyze(f.breakCondition)
+    checkBoolean(f.breakCondition)
+    this.analyze(f.bump)
+    this.checkNumeric(f.bump)
+    this.newChildContext({ inLoop: true }).analyze(f.block)
+  }
   //   RepeatStatement(s) {
   //     this.analyze(s.count)
   //     checkInteger(s.count)
