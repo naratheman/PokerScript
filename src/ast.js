@@ -12,7 +12,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   },
   Statement_vardec(modifier, type, id, _colon, initializer) {
     return new core.VariableDeclaration(
-      modifier.ast(),
+      modifier.ast()?.[0],
       type.ast(),
       id.ast(),
       initializer.ast()
@@ -139,7 +139,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   Statement_while(_while, test, body) {
     return new core.WhileStatement(test.ast(), body.ast())
   },
-  Bump(op, operand) {
+  Bump(operand, op) {
     return new core.Bump(operand.ast(), op.sourceString)
   },
   Call(id, _open, args, _close) {
@@ -272,12 +272,12 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   id(_first, _rest) {
     return new core.Token("Id", this.source)
   },
-  // true(_) {
-  //   return new core.Token("Bool", this.source)
-  // },
-  // false(_) {
-  //   return new core.Token("Bool", this.source)
-  // },
+  hit(_) {
+    return new core.Token("Bool", this.source)
+  },
+  miss(_) {
+    return new core.Token("Bool", this.source)
+  },
   intLit(_digits) {
     return new core.Token("Int", this.source)
   },

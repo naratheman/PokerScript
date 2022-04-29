@@ -133,7 +133,6 @@ function checkInteger(e) {
 }
 
 function checkIsAType(e) {
-  // console.log("EEEEEEEEEE", e)
   check(e instanceof Type, "Type expected", e)
 }
 
@@ -228,7 +227,7 @@ function checkArgumentsMatch(args, targetTypes) {
 }
 
 function checkFunctionCallArguments(args, calleeType) {
-  console.log("args", args.length, "calleeType", calleeType)
+  // console.log("args", args.length, "calleeType", calleeType)
   const paramTypes = (InstObjs) => InstObjs.map((x) => x.type)
   checkArgumentsMatch(args, paramTypes(calleeType))
 }
@@ -275,7 +274,7 @@ class Context {
     return new Context({ ...this, parent: this, locals: new Map(), ...props })
   }
   analyze(node) {
-    console.log(node.constructor)
+    // console.log(node.constructor)
     return this[node.constructor.name](node)
   }
   Program(p) {
@@ -285,7 +284,7 @@ class Context {
     this.analyze(d.initializer)
     d.variable.value = new Variable(
       d.variable.lexeme,
-      d.modifier.lexeme === "constantPressure"
+      d.modifier?.lexeme === "constantPressure"
     )
     d.variable.value.type = d.initializer.type
     this.add(d.variable.lexeme, d.variable.value)
@@ -472,10 +471,10 @@ class Context {
   }
   UnaryExpression(e) {
     this.analyze(e.operand)
-    if (e.op.lexeme === "!") {
+    if (e.op === "!") {
       checkBoolean(e.operand)
       e.type = Type.BOOLEAN
-    } else if (e.op.lexeme === "-") {
+    } else if (e.op === "-") {
       checkNumeric(e.operand)
       e.type = e.operand.type
     }
@@ -508,7 +507,7 @@ class Context {
   Call(c) {
     this.analyze(c.callee)
     const callee = c.callee?.value ?? c.callee
-    console.log("callee", callee)
+    // console.log("callee", callee)
     //checkCallable(callee)
     this.analyze(c.args)
     // if (callee.constructor === StructType) {
@@ -530,7 +529,7 @@ class Context {
       [t.value, t.type] = [Number(t.lexeme), Type.FLOAT]
     if (t.category === "Str") [t.value, t.type] = [t.lexeme, Type.STRING]
     if (t.category === "Bool")
-      [t.value, t.type] = [t.lexeme === "true", Type.BOOLEAN]
+      [t.value, t.type] = [t.lexeme === "hit", Type.BOOLEAN]
     if (t.category === "Sym") {
       if (t.lexeme === "chip") t.value = Type.INT
       if (t.lexeme === "stringBet") t.value = Type.STRING
