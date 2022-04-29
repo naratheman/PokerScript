@@ -78,7 +78,7 @@ const semanticChecks = [
     "array parameters",
     "straddle chip square(flop chip : x) $. cashout x[0]**2.$",
   ],
-  ["optional parameters", "straddle chip num(chip?: x) $. cashout x.$"],
+  ["optional parameters", "straddle chip? num(chip?: x) $. cashout x.$"],
   // ["empty optional types", "print(no [int]); print(no string);"],
   // ["types in function type", "function f(g: (int?, float)->string) {}"],
   // ["voids in fn type", "function f(g: (void)->void) {}"],
@@ -108,18 +108,18 @@ const semanticErrors = [
   ],
   [
     "assign bad type",
-    "chip x: 1\n x: true",
-    /Cannot assign a boolean to a int/,
+    "chip x: 1\n x: hit",
+    /Cannot assign a playingOnTilt to a chip/,
   ],
   [
     "assign bad array type",
     "flop chip x: [1]\n x: [hit]",
-    /Cannot assign a \[boolean\] to a int/,
+    /Cannot assign a \[playingOnTilt\] to a \[chip\]/,
   ],
   [
     "assign bad optional type",
     "chip x: 1\n chip? y: 2\n x: y",
-    /Cannot assign a int\? to a int/,
+    /Cannot assign a chip\? to a chip/,
   ],
   ["break outside loop", "fold", /Break can only appear in a loop/],
   //   [
