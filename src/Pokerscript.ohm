@@ -31,7 +31,7 @@ PokerScript {
                         | stringBet                                        
 
     Exp                 = ("-" | "!") Exp                               -- unary
-                        | Exp1 "?" Block ":" Block                      -- ternary
+                        | Exp1 "?" Exp2 ":" Exp1                        -- ternary
                         | Exp1
     Exp1                = Exp1 "||" Exp2                                -- binary
                         | Exp2
