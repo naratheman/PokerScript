@@ -166,6 +166,7 @@ function checkAllHaveSameType(expressions) {
 // }
 
 function checkAssignable(e, { toType: type }) {
+  //("e", e)
   check(
     type === Type.ANY || e.type.isAssignableTo(type),
     `Cannot assign a ${e.type.description} to a ${type.description}`
@@ -199,23 +200,23 @@ function checkInFunction(context) {
   check(context.function, "Return can only appear in a function")
 }
 
-function checkCallable(e) {
-  check(
-    e.constructor === StructType || e.type.constructor == FunctionType,
-    "Call of non-function or non-constructor"
-  )
-}
+// function checkCallable(e) {
+//   check(
+//     e.constructor === StructType || e.type.constructor == FunctionType,
+//     "Call of non-function or non-constructor"
+//   )
+// }
 
 function checkReturnsNothing(f) {
   check(f.type.returnType === Type.VOID, "Something should be returned here")
 }
 
 function checkReturnsSomething(f) {
-  check(f.type.returnType !== Type.VOID, "Cannot return a value here")
+  check(f.returnType !== Type.VOID, "Cannot return a value here")
 }
 
 function checkReturnable({ expression: e, from: f }) {
-  checkAssignable(e, { toType: f.type.returnType })
+  checkAssignable(e, { toType: f.returnType })
 }
 
 function checkArgumentsMatch(args, targetTypes) {
@@ -227,7 +228,9 @@ function checkArgumentsMatch(args, targetTypes) {
 }
 
 function checkFunctionCallArguments(args, calleeType) {
-  checkArgumentsMatch(args, calleeType.paramTypes)
+  console.log("args", args.length, "calleeType", calleeType)
+  const paramTypes = (InstObjs) => InstObjs.map((x) => x.type)
+  checkArgumentsMatch(args, paramTypes(calleeType))
 }
 
 function checkConstructorArguments(args, structType) {
@@ -272,7 +275,7 @@ class Context {
     return new Context({ ...this, parent: this, locals: new Map(), ...props })
   }
   analyze(node) {
-    console.log(node.constructor.name)
+    console.log(node.constructor)
     return this[node.constructor.name](node)
   }
   Program(p) {
@@ -316,13 +319,16 @@ class Context {
       function: d.fun.value,
     })
     childContext.analyze(d.fun.value.parameters)
-    d.fun.value.type = new FunctionType(
-      d.fun.value.parameters.map((p) => p.type),
-      d.fun.value.returnType
-    )
+    // d.fun.value.type = new FunctionType(
+    //   d.fun.value.parameters.map((p) => p.type),
+    //   d.fun.value.returnType
+    // )
     // Add before analyzing the body to allow recursion
     this.add(d.fun.lexeme, d.fun.value)
     childContext.analyze(d.body)
+  }
+  Block(b) {
+    return this.analyze(b.statements)
   }
   Parameter(p) {
     this.analyze(p.type)
@@ -336,8 +342,9 @@ class Context {
   }
   Instantiation(i) {
     this.analyze(i.type)
-    this.analyze(i.name)
-    i.value = new InstantiationObj(i.type, i.name)
+    if (i.type instanceof Token) i.type = i.type.value
+    checkIsAType(i.type)
+    this.add(i.name.lexeme, i)
   }
   // FunctionType(t) {
   //   this.analyze(t.paramTypes)
@@ -436,19 +443,19 @@ class Context {
   BinaryExpression(e) {
     this.analyze(e.left)
     this.analyze(e.right)
-    if (["+"].includes(e.op.lexeme)) {
+    if (["+"].includes(e.op)) {
       checkNumericOrString(e.left)
       checkHaveSameType(e.left, e.right)
       e.type = e.left.type
-    } else if (["-", "*", "/", "%", "**"].includes(e.op.lexeme)) {
+    } else if (["-", "*", "/", "%", "**"].includes(e.op)) {
       checkNumeric(e.left)
       checkHaveSameType(e.left, e.right)
       e.type = e.left.type
-    } else if (["<", "<=", ">", ">="].includes(e.op.lexeme)) {
+    } else if (["<", "<=", ">", ">="].includes(e.op)) {
       checkNumericOrString(e.left)
       checkHaveSameType(e.left, e.right)
       e.type = Type.BOOLEAN
-    } else if (["&&", "||"].includes(e.op.lexeme)) {
+    } else if (["&&", "||"].includes(e.op)) {
       checkBoolean(e.left)
       checkBoolean(e.right)
       e.type = Type.BOOLEAN
@@ -492,15 +499,16 @@ class Context {
   Call(c) {
     this.analyze(c.callee)
     const callee = c.callee?.value ?? c.callee
-    checkCallable(callee)
+    console.log("callee", callee)
+    //checkCallable(callee)
     this.analyze(c.args)
-    if (callee.constructor === StructType) {
-      checkConstructorArguments(c.args, callee)
-      c.type = callee
-    } else {
-      checkFunctionCallArguments(c.args, callee.type)
-      c.type = callee.type.returnType
-    }
+    // if (callee.constructor === StructType) {
+    //   checkConstructorArguments(c.args, callee)
+    //   c.type = callee
+    // } else {
+    checkFunctionCallArguments(c.args, callee.parameters)
+    c.type = callee.returnType
+    // }
   }
   Token(t) {
     // For ids being used, not defined

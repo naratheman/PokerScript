@@ -52,7 +52,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   },
 
   Inst(type, _colon, id) {
-    return new core.Instantiation(type.sourceString, id.sourceString)
+    return new core.Instantiation(type.ast(), id.ast())
   },
 
   // Statement_assign(variable, _eq, expression, _semicolon) {
@@ -143,7 +143,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     return new core.Bump(operand.ast(), op.sourceString)
   },
   Call(id, _open, args, _close) {
-    return new core.Call(id.sourceString, args.asIteration().ast())
+    return new core.Call(id.ast(), args.asIteration().ast())
   },
   Type_optional(type, _qmark) {
     return new core.OptionalType(type.ast())
