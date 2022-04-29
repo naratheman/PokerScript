@@ -5,9 +5,12 @@ import * as core from "../src/core.js"
 
 // Programs that are semantically correct
 const semanticChecks = [
-  ["variable declarations", 'constantPressure chip x: 1; stringBet y: "false"'],
+  [
+    "variable declarations",
+    'constantPressure chip x: 1\n stringBet y: "false"',
+  ],
   ["optional array types", "flop chip? x: [1]"],
-  ["increment and decrement", "chip x: 10\n x-$\n x+$;"],
+  ["increment and decrement", "chip x: 10\n x-$\n x+$"],
   ["declare arrays", "flop chip myarray :[69, 420, 666] "],
   ["assign to array element", "flop chip a : [1,2,3]\n a[1]=100;"],
   ["return", "straddle chip nice()$.cashout 69.$"],
