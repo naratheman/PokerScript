@@ -13,11 +13,12 @@ PokerScript {
                         | ForLoop
                         | Exp
                 
-    ForLoop             = playingLoose "(" chip Assign "," Exp "," Bump ")" Block
+    ForLoop             = playingLoose "(" LoopDec "," Exp "," Bump ")" Block
+    LoopDec             = chip id ":" Exp
     Bump                = Exp7 ("+$" | "-$") 
     Elif                = followingExcuses Exp Block
     Else                = noMoreExcuses Block
-    Assign              = id (":" | "incrementBy" | "decrementBy") Exp
+    Assign              = Exp7 (":" | "incrementBy" | "decrementBy") Exp
     Inst                = Type ":" id      
     Block               = "$." Statement* ".$"
     Call                = id "(" Args ")"

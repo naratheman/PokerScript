@@ -34,8 +34,7 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   ForLoop(
     _playingLoose,
     _open,
-    _chip,
-    assign,
+    loopDec,
     _comma,
     breakCondition,
     _comma2,
@@ -44,13 +43,16 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     block
   ) {
     return new core.ForLoop(
-      assign.ast(),
+      loopDec.ast(),
       breakCondition.ast(),
       bump.ast(),
       block.ast()
     )
   },
 
+  LoopDec(type, id, _colon, exp) {
+    return new core.LoopDec(type.ast(), id.ast(), exp.ast())
+  },
   Inst(type, _colon, id) {
     return new core.Instantiation(type.ast(), id.ast())
   },

@@ -129,6 +129,7 @@ function checkBoolean(e) {
 }
 
 function checkInteger(e) {
+  console.log(e)
   checkType(e, [Type.INT], "an integer")
 }
 
@@ -274,7 +275,7 @@ class Context {
     return new Context({ ...this, parent: this, locals: new Map(), ...props })
   }
   analyze(node) {
-    // console.log(node.constructor)
+    console.log(node.constructor)
     return this[node.constructor.name](node)
   }
   Program(p) {
@@ -358,11 +359,13 @@ class Context {
   Bump(s) {
     this.analyze(s.operand)
     checkInteger(s.operand)
+    s.type = Type.INT
   }
   Assignment(s) {
     this.analyze(s.source)
     this.analyze(s.target)
     checkAssignable(s.source, { toType: s.target.type })
+    checkHaveSameType(s.source, s.target)
     checkNotReadOnly(s.target)
   }
   PrintStatement(s) {
@@ -385,12 +388,12 @@ class Context {
     this.analyze(s.test)
     checkBoolean(s.test)
     this.newChildContext().analyze(s.consequent)
-    if (s.alternate.constructor === Array) {
+    if (s.alternates !== []) {
       // It's a block of statements, make a new context
-      this.newChildContext().analyze(s.alternate)
-    } else if (s.alternate) {
+      this.newChildContext().analyze(s.alternates)
+    } else if (s.Else) {
       // It's a trailing if-statement, so same context
-      this.analyze(s.alternate)
+      this.analyze(s.Else)
     }
   }
   //   ShortIfStatement(s) {
@@ -404,13 +407,20 @@ class Context {
     this.newChildContext({ inLoop: true }).analyze(s.body)
   }
   ForLoop(f) {
-    this.analyze(f.assign)
-    checkNumeric(f.assign)
+    this.analyze(f.declaration)
+    console.log("DEC", f.declaration)
+    checkInteger(f.declaration.id.value)
     this.analyze(f.breakCondition)
     checkBoolean(f.breakCondition)
-    this.analyze(f.bump)
-    this.checkNumeric(f.bump)
-    this.newChildContext({ inLoop: true }).analyze(f.block)
+    this.analyze(f.incDec)
+    checkInteger(f.incDec)
+    this.newChildContext({ inLoop: true }).analyze(f.body)
+  }
+  LoopDec(l) {
+    this.analyze(l.init)
+    l.id.value = new Variable(l.id.lexeme, false)
+    l.id.value.type = l.init.type
+    this.add(l.id.lexeme, l.id.value)
   }
   //   RepeatStatement(s) {
   //     this.analyze(s.count)
@@ -429,15 +439,15 @@ class Context {
   //     bodyContext.add(s.iterator.name, s.iterator)
   //     bodyContext.analyze(s.body)
   //   }
-  ForStatement(s) {
-    this.analyze(s.collection)
-    checkArray(s.collection)
-    s.iterator = new Variable(s.iterator.lexeme, true)
-    s.iterator.type = s.collection.type.baseType
-    const bodyContext = this.newChildContext({ inLoop: true })
-    bodyContext.add(s.iterator.name, s.iterator)
-    bodyContext.analyze(s.body)
-  }
+  // ForStatement(s) {
+  //   this.analyze(s.collection)
+  //   checkArray(s.collection)
+  //   s.iterator = new Variable(s.iterator.lexeme, true)
+  //   s.iterator.type = s.collection.type.baseType
+  //   const bodyContext = this.newChildContext({ inLoop: true })
+  //   bodyContext.add(s.iterator.name, s.iterator)
+  //   bodyContext.analyze(s.body)
+  // }
   Conditional(e) {
     this.analyze(e.test)
     checkBoolean(e.test)
@@ -459,6 +469,9 @@ class Context {
       checkNumeric(e.left)
       checkHaveSameType(e.left, e.right)
       e.type = e.left.type
+    } else if (["==", "!="].includes(e.op)) {
+      checkHaveSameType(e.left, e.right)
+      e.type = Type.BOOLEAN
     } else if (["<", "<=", ">", ">="].includes(e.op)) {
       checkNumericOrString(e.left)
       checkHaveSameType(e.left, e.right)
