@@ -80,6 +80,7 @@ const optimizers = {
     return s
   },
   Assignment(s) {
+    console.log(s)
     s.source = optimize(s.source)
     s.target = optimize(s.target)
     if (s.source === s.target) {
@@ -123,30 +124,36 @@ const optimizers = {
     s.body = optimize(s.body)
     return s
   },
-  RepeatStatement(s) {
-    s.count = optimize(s.count)
-    if (s.count === 0) {
-      // repeat 0 times is a no-op
-      return []
-    }
-    s.body = optimize(s.body)
-    return s
+  Instantiation(i) {
+    return i
   },
-  ForRangeStatement(s) {
-    s.iterator = optimize(s.iterator)
-    s.low = optimize(s.low)
-    s.op = optimize(s.op)
-    s.high = optimize(s.high)
-    s.body = optimize(s.body)
-    if (s.low.constructor === Number) {
-      if (s.high.constructor === Number) {
-        if (s.low > s.high) {
-          return []
-        }
-      }
-    }
-    return s
+  Block(b) {
+    b.statements = optimize(b.statements)
   },
+  // RepeatStatement(s) {
+  //   s.count = optimize(s.count)
+  //   if (s.count === 0) {
+  //     // repeat 0 times is a no-op
+  //     return []
+  //   }
+  //   s.body = optimize(s.body)
+  //   return s
+  // },
+  // ForRangeStatement(s) {
+  //   s.iterator = optimize(s.iterator)
+  //   s.low = optimize(s.low)
+  //   s.op = optimize(s.op)
+  //   s.high = optimize(s.high)
+  //   s.body = optimize(s.body)
+  //   if (s.low.constructor === Number) {
+  //     if (s.high.constructor === Number) {
+  //       if (s.low > s.high) {
+  //         return []
+  //       }
+  //     }
+  //   }
+  //   return s
+  // },
   ForStatement(s) {
     s.iterator = optimize(s.iterator)
     s.collection = optimize(s.collection)
@@ -169,12 +176,7 @@ const optimizers = {
     e.op = optimize(e.op)
     e.left = optimize(e.left)
     e.right = optimize(e.right)
-    if (e.op === "??") {
-      // Coalesce Empty Optional Unwraps
-      if (e.left.constructor === core.EmptyOptional) {
-        return e.right
-      }
-    } else if (e.op === "&&") {
+    if (e.op === "&&") {
       // Optimize boolean constants in && and ||
       if (e.left === true) return e.right
       else if (e.right === true) return e.left
@@ -231,6 +233,11 @@ const optimizers = {
   ArrayExpression(e) {
     e.elements = optimize(e.elements)
     return e
+  },
+  Subscript(a) {
+    a.array = optimize(a.array)
+    a.index = optimize(a.index)
+    return a
   },
   EmptyArray(e) {
     return e

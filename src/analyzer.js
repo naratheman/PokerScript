@@ -129,7 +129,7 @@ function checkBoolean(e) {
 }
 
 function checkInteger(e) {
-  console.log(e)
+  //console.log(e)
   checkType(e, [Type.INT], "an integer")
 }
 
@@ -275,7 +275,6 @@ class Context {
     return new Context({ ...this, parent: this, locals: new Map(), ...props })
   }
   analyze(node) {
-    console.log(node.constructor)
     return this[node.constructor.name](node)
   }
   Program(p) {
@@ -408,7 +407,7 @@ class Context {
   }
   ForLoop(f) {
     this.analyze(f.declaration)
-    console.log("DEC", f.declaration)
+    //console.log("DEC", f.declaration)
     checkInteger(f.declaration.id.value)
     this.analyze(f.breakCondition)
     checkBoolean(f.breakCondition)
