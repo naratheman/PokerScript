@@ -17,7 +17,7 @@ const semanticChecks = [
   ["if statements", 'chip x: 10\nexcuses x==0 $. reveal "That ain\'t 10".$'],
   [
     "else if",
-    "chip x: 0\n excuses x==0 $.x: 10.$ noMoreExcuses $. stringBet y: no .$",
+    'chip x: 0\n excuses x==0 $.x: 10.$ followingExcuses x == 10 $. x: 0 .$ noMoreExcuses $. stringBet y: "no" .$',
   ],
   ["for loop", 'playingLoose (chip x:0, x<= 10, x+$) $. reveal "Hello" .$'],
   ["conditionals with ints", "reveal hit ? 8 : 5"],

@@ -25,10 +25,8 @@ const syntaxChecks = [
     "if else function",
     `excuses x == 0 $. cashout hit .$ followingExcuses hit $. cashout miss.$ noMoreExcuses $. reveal "what".$`,
   ],
-  [
-    "ternary function",
-    `total == 21 ? $.reveal "Stand".$ : $.hitOrBust(total).$`,
-  ],
+  ["ternary function", `total == 21 ? reveal "Stand" : hitOrBust(total)`],
+  ["function call", "add(9, 10)"],
   ["reassignment", "x: pog"],
   ["for loop", "playingLoose (chip y: 0, y < 20, y+$) $.y incrementBy 5.$"],
   [

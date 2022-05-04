@@ -142,7 +142,8 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
     return new core.WhileStatement(test.ast(), body.ast())
   },
   Bump(operand, op) {
-    return new core.Bump(operand.ast(), op.sourceString)
+    if (op.sourceString === "+$") return new core.Increment(operand.ast())
+    else return new core.Decrement(operand.ast())
   },
   Call(id, _open, args, _close) {
     return new core.Call(id.ast(), args.asIteration().ast())

@@ -55,7 +55,7 @@ const tests = [
   ["removes right false from ||", or(less(x, 1), false), less(x, 1)],
   ["removes left true from &&", and(true, less(x, 1)), less(x, 1)],
   ["removes right true from &&", and(less(x, 1), true), less(x, 1)],
-  ["removes x=x at beginning", [new core.Assignment(x, ":", x), xpp], [xpp]],
+  ["removes x=x at beginning", [new core.Assignment(x, ":", x), 1], [1]],
   ["removes x=x at end", [xpp, new core.Assignment(x, ":", x)], [xpp]],
   [
     "removes x=x in middle",
@@ -64,8 +64,6 @@ const tests = [
   ],
   ["optimizes if-true", new core.IfStatement(true, xpp, []), xpp],
   ["optimizes if-false", new core.IfStatement(false, [], xpp), xpp],
-  ["optimizes short-if-true", new core.IfStatement(true, xmm), xmm],
-  ["optimizes short-if-false", [new core.IfStatement(false, xpp)], []],
   ["optimizes while-false", [new core.WhileStatement(false, xpp)], []],
   ["applies if-false after folding", new core.IfStatement(eq(1, 1), xpp), xpp],
   ["optimizes left conditional true", conditional(true, 55, 89), 55],

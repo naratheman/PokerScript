@@ -355,7 +355,12 @@ class Context {
     this.analyze(t.baseType)
     if (t.baseType instanceof Token) t.baseType = t.baseType.value
   }
-  Bump(s) {
+  Increment(s) {
+    this.analyze(s.operand)
+    checkInteger(s.operand)
+    s.type = Type.INT
+  }
+  Decrement(s) {
     this.analyze(s.operand)
     checkInteger(s.operand)
     s.type = Type.INT
@@ -387,7 +392,7 @@ class Context {
     this.analyze(s.test)
     checkBoolean(s.test)
     this.newChildContext().analyze(s.consequent)
-    if (s.alternates !== []) {
+    if (s.alternates !== undefined && s.alternates !== []) {
       // It's a block of statements, make a new context
       this.newChildContext().analyze(s.alternates)
     } else if (s.Else) {

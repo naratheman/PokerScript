@@ -72,21 +72,25 @@ const optimizers = {
     return p
   },
   Increment(s) {
-    s.variable = optimize(s.variable)
+    s.operand = optimize(s.operand)
     return s
   },
   Decrement(s) {
-    s.variable = optimize(s.variable)
+    s.operand = optimize(s.operand)
     return s
   },
   Assignment(s) {
-    console.log(s)
     s.source = optimize(s.source)
     s.target = optimize(s.target)
     if (s.source === s.target) {
       return []
     }
     return s
+  },
+  Bump(b) {
+    if (b.op === "+$") b.operand = b.operand.value + 1
+    else b.operand = b.operand.value - 1
+    return b
   },
   BreakStatement(s) {
     return s
@@ -95,23 +99,15 @@ const optimizers = {
     s.expression = optimize(s.expression)
     return s
   },
-  ShortReturnStatement(s) {
-    return s
-  },
   IfStatement(s) {
     s.test = optimize(s.test)
     s.consequent = optimize(s.consequent)
-    s.alternate = optimize(s.alternate)
-    if (s.test.constructor === Boolean) {
-      return s.test ? s.consequent : s.alternate
+    if (s.alternates !== undefined) {
+      console.log(s.alternates)
+      s.alternates = s.alternates.map(optimize)
     }
-    return s
-  },
-  ShortIfStatement(s) {
-    s.test = optimize(s.test)
-    s.consequent = optimize(s.consequent)
     if (s.test.constructor === Boolean) {
-      return s.test ? s.consequent : []
+      return s.test ? s.consequent : s.alternates
     }
     return s
   },

@@ -142,8 +142,19 @@ export class Bump {
   }
 }
 
+export class Increment {
+  constructor(operand) {
+    Object.assign(this, { operand })
+  }
+}
+
+export class Decrement {
+  constructor(operand) {
+    Object.assign(this, { operand })
+  }
+}
+
 export class Assignment {
-  // Example: a[z].p = 50 * 22 ** 3 - x
   constructor(target, op, source) {
     Object.assign(this, { target, op, source })
   }
