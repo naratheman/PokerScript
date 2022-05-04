@@ -124,16 +124,11 @@ const astBuilder = psGrammar.createSemantics().addOperation("ast", {
   },
 
   Elif(_elif, test, consequent) {
-    return new core.IfStatement(
-      test.ast(),
-      consequent.ast(),
-      undefined,
-      undefined
-    )
+    return new core.IfStatement(test.ast(), consequent.ast(), [], [])
   },
 
   Else(_else, body) {
-    return new core.IfStatement(true, body.ast(), undefined, undefined)
+    return new core.IfStatement(true, body.ast(), [], [])
   },
   // Statement_ifShort(_if, test, consequent) {
   //   return new core.ShortIfStatement(test.ast(), consequent.ast())

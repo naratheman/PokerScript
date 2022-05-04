@@ -63,7 +63,7 @@ const tests = [
     [xpp, xpp],
   ],
   ["optimizes if-true", new core.IfStatement(true, xpp, []), xpp],
-  ["optimizes if-false", new core.IfStatement(false, [], xpp), xpp],
+  ["optimizes if-false", new core.IfStatement(false, [], [], []), []],
   ["optimizes while-false", [new core.WhileStatement(false, xpp)], []],
   ["applies if-false after folding", new core.IfStatement(eq(1, 1), xpp), xpp],
   ["optimizes left conditional true", conditional(true, 55, 89), 55],
