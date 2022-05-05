@@ -11,7 +11,7 @@ function makeConstant(name, type, value) {
   return Object.assign(new Variable(name, true), { type, value })
 }
 
-const floatsType = new ArrayType(Type.FLOAT)
+// const floatsType = new ArrayType(Type.FLOAT)
 // const floatFloatType = new FunctionType([Type.FLOAT], Type.FLOAT)
 // const floatFloatFloatType = new FunctionType(
 //   [Type.FLOAT, Type.FLOAT],
