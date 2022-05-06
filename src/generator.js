@@ -67,20 +67,18 @@ export default function generate(program) {
     //   return targetName(f)
     // },
     FunctionDeclaration(d) {
-      output.push(
-        `function ${gen(d.fun)}(${gen(d.fun.parameters).join(", ")}) {`
-      )
+      output.push(`function ${gen(d.fun)}(${gen(d.parameters).join(", ")}) {`)
       gen(d.body)
       output.push("}")
+    },
+    Instantiation(i) {
+      output.push(`${gen(i.name)}`)
     },
     Parameter(p) {
       return targetName(p)
     },
     Variable(v) {
       // Standard library constants just get special treatment
-      if (v === stdlib.contents.π) {
-        return "Math.PI"
-      }
       return targetName(v)
     },
     Function(f) {
@@ -116,29 +114,8 @@ export default function generate(program) {
         output.push("}")
       }
     },
-    ShortIfStatement(s) {
-      output.push(`if (${gen(s.test)}) {`)
-      gen(s.consequent)
-      output.push("}")
-    },
     WhileStatement(s) {
       output.push(`while (${gen(s.test)}) {`)
-      gen(s.body)
-      output.push("}")
-    },
-    RepeatStatement(s) {
-      // JS can only repeat n times if you give it a counter variable!
-      const i = targetName({ name: "i" })
-      output.push(`for (let ${i} = 0; ${i} < ${gen(s.count)}; ${i}++) {`)
-      gen(s.body)
-      output.push("}")
-    },
-    ForRangeStatement(s) {
-      const i = targetName(s.iterator)
-      const op = s.op === "..." ? "<=" : "<"
-      output.push(
-        `for (let ${i} = ${gen(s.low)}; ${i} ${op} ${gen(s.high)}; ${i}++) {`
-      )
       gen(s.body)
       output.push("}")
     },
@@ -165,17 +142,14 @@ export default function generate(program) {
       }
       return `${e.op}(${gen(e.operand)})`
     },
-    EmptyOptional(e) {
-      return "undefined"
-    },
-    SubscriptExpression(e) {
-      return `${gen(e.array)}[${gen(e.index)}]`
-    },
     ArrayExpression(e) {
       return `[${gen(e.elements).join(",")}]`
     },
     EmptyArray(e) {
       return "[]"
+    },
+    Subscript(s) {
+      return `${gen(s.array)}[${gen(s.index)}]`
     },
     MemberExpression(e) {
       const object = gen(e.object)
