@@ -125,6 +125,7 @@ const optimizers = {
   },
   Block(b) {
     b.statements = optimize(b.statements)
+    return b
   },
   // RepeatStatement(s) {
   //   s.count = optimize(s.count)

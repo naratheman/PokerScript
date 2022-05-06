@@ -71,8 +71,12 @@ export default function generate(program) {
       gen(d.body)
       output.push("}")
     },
+    Block(b) {
+      output.push(`${gen(b.statements)};`)
+    },
     Instantiation(i) {
-      output.push(`${gen(i.name)}`)
+      console.log(i)
+      output.push(`${gen(i.name.source._contents)}`)
     },
     Parameter(p) {
       return targetName(p)
