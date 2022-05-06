@@ -72,11 +72,11 @@ export default function generate(program) {
       output.push("}")
     },
     Block(b) {
-      output.push(`${gen(b.statements)};`)
+      output.push(`${gen(b.statements)}`)
     },
     Instantiation(i) {
       console.log(i)
-      output.push(`${gen(i.name.source._contents)}`)
+      return `${gen(i.name.source._contents)}`
     },
     Parameter(p) {
       return targetName(p)
